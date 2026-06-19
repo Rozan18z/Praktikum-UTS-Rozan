@@ -1,173 +1,337 @@
+<!-- Menandakan bahwa dokumen ini menggunakan standar HTML5 terbaru -->
 <!doctype html>
+<!-- Tag pembuka HTML dengan pengaturan bahasa Indonesia dan tinggi halaman 100% -->
 <html lang="id" class="h-100">
+<!-- Bagian head untuk memuat metadata, judul tab, pustaka, dan file gaya CSS -->
 <head>
+    <!-- Menentukan encoding karakter UTF-8 agar teks dibaca dengan benar oleh browser -->
     <meta charset="UTF-8">
+    <!-- Mengatur viewport agar tampilan website otomatis pas dan responsive di layar HP maupun laptop -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Judul dari halaman web yang akan muncul pada bagian tab browser Anda -->
     <title>Skuad - Manchester United</title>
+    <!-- Memanggil library CSS Framework Bootstrap 5 via online CDN untuk tata letak halaman secara kilat -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Memanggil library berkas skrip Lucide Icons untuk kebutuhan memunculkan ikon di halaman web -->
     <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+    <!-- Mengambil kombinasi rumpun font Oswald dan Source Sans 3 langsung dari server Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Memanggil berkas eksternal stylesheet kustom buatan Anda sendiri bernama style.css -->
     <link rel="stylesheet" href="style.css">
+<!-- Penutup tag head dokumen -->
 </head>
+<!-- Membuka tag body dengan warna background hitam pekat (#0f0f0f) dan mengaktifkan scrollbar vertikal otomatis -->
 <body class="h-100 font-body" style="background:#0f0f0f; overflow-y: auto;">
+    <!-- Pembungkus utama aplikasi dengan background hitam pekat, memenuhi tinggi layar minimal (min-vh-100) -->
     <div id="app" class="w-100 min-vh-100 text-white d-flex flex-column" style="background:#0f0f0f;">
         
+        <!-- ==================== BAGIAN NAVIGASI / NAVBAR ATAS ==================== -->
+        <!-- Membuka tag navigasi Bootstrap berwarna gelap dengan flexbox pembagi ruang kiri-kanan serta garis pembatas bawah -->
         <nav class="navbar navbar-dark w-100 d-flex align-items-center justify-content-between px-4 py-3 border-bottom" style="border-color: #1f2937 !important; background: #0f0f0f;">
+            <!-- Sisi Kiri: Wadah flexbox penampung gambar logo klub dan teks nama klub dengan sela gap-3 -->
             <div class="d-flex align-items-center gap-3">
+                <!-- Memanggil file gambar logo Manchester United dari dalam folder lokal foto -->
                 <img src="foto/emyu.png" alt="MU Logo" class="object-fit-contain" style="width: 40px; height: 40px;">
+                <!-- Menampilkan teks nama klub utama bermodel font heading dengan selektor id khusus warna putih -->
                 <span id="nav-club-name" class="font-heading fs-5 fw-bold" style="color:#ffffff;">MANCHESTER UNITED</span>
+            <!-- Penutup elemen sisi kiri navigasi -->
             </div>
             
+            <!-- Sisi Kanan: Barisan tautan menu utama yang otomatis disembunyikan di layar HP dan aktif bermodel flex di laptop -->
             <div class="d-none d-md-flex gap-4 small fw-semibold" style="color:#a3a3a3; letter-spacing: 0.05em;">
+                <!-- Tautan link menu menuju ke file Beranda (index.html) dengan format teks sekunder abu-abu -->
                 <a href="index.html" class="text-decoration-none text-secondary text-white-hover transition">BERANDA</a> 
-                <a href="squad.html" class="text-decoration-none text-white transition">SKUAD</a> <a href="pelatih.html" class="text-decoration-none text-secondary text-white-hover transition">PELATIH</a> 
+                <!-- Tautan link menu aktif halaman Skuad (squad.html) dengan penanda teks putih terang pekat -->
+                <a href="squad.html" class="text-decoration-none text-white transition">SKUAD</a> 
+                <!-- Tautan link menu menuju ke file halaman data profil Tim Pelatih (pelatih.html) -->
+                <a href="pelatih.html" class="text-decoration-none text-secondary text-white-hover transition">PELATIH</a> 
+                <!-- Tautan link menu menuju ke file halaman Jadwal Pertandingan (jadwal.html) -->
                 <a href="jadwal.html" class="text-decoration-none text-secondary text-white-hover transition">JADWAL</a> 
+                <!-- Tautan link menu menuju ke file ringkasan artikel Berita Terbaru (berita.html) -->
                 <a href="berita.html" class="text-decoration-none text-secondary text-white-hover transition">BERITA</a>
+            <!-- Penutup wadah deretan menu navigasi desktop layar besar -->
             </div>
             
+            <!-- Tombol burger menu kustom menggunakan susunan 3 baris garis span CSS murni agar dijamin tampil putih di HP -->
             <button class="d-md-none border-0 p-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-label="Toggle navigation" style="background: transparent;">
+                <!-- Kotak flexbox vertikal berdimensi lebar 24px dan tinggi 18px untuk menyusun letak tumpukan garis burger -->
                 <div style="width: 24px; height: 18px; display: flex; flex-direction: column; justify-content: space-between;">
+                    <!-- Komponen baris pembentuk garis hamburger pertama berwarna putih tinggi 2px -->
                     <span style="display: block; width: 100%; height: 2px; background-color: #ffffff;"></span>
+                    <!-- Komponen baris pembentuk garis hamburger kedua berwarna putih tinggi 2px -->
                     <span style="display: block; width: 100%; height: 2px; background-color: #ffffff;"></span>
+                    <!-- Komponen baris pembentuk garis hamburger ketiga berwarna putih tinggi 2px -->
                     <span style="display: block; width: 100%; height: 2px; background-color: #ffffff;"></span>
+                <!-- Penutup wadah garis hamburger kustom -->
                 </div>
+            <!-- Penutup tombol interaktif menu mobile hamburger -->
             </button>
+        <!-- Penutup total komponen garis navigasi navbar atas -->
         </nav>
 
+        <!-- === MENU RESPONSIF LAYAR HP (OFFCANVAS) === -->
+        <!-- Kotak kontainer menu geser samping offcanvas bawaan Bootstrap yang aktif khusus pada resolusi layar HP -->
         <div class="offcanvas offcanvas-end text-bg-dark d-md-none" tabindex="-1" id="mobileMenu" style="background-color: #0f0f0f !important;">
+            <!-- Bagian kepala offcanvas menu mobile penampung judul area navigasi dan tombol close silang -->
             <div class="offcanvas-header border-bottom" style="border-color: #1f2937 !important;">
+                <!-- Judul teks menu offcanvas bertuliskan MENU NAVIGASI berfont heading tebal -->
                 <h5 class="offcanvas-title font-heading fw-bold">MENU NAVIGASI</h5>
+                <!-- Tombol silang putih sistem bawaan Bootstrap untuk menutup paksa menu tarik samping mobile -->
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            <!-- Penutup elemen header menu samping mobile -->
             </div>
+            <!-- Bagian isi badan menu offcanvas untuk menaruh barisan daftar link tautan responsif smartphone -->
             <div class="offcanvas-body">
+                <!-- Susunan susun ke bawah vertikal (flex-column) bersela jarak longgar untuk link menu navigasi internal HP -->
                 <div class="d-flex flex-column gap-4 fw-semibold fs-5 mt-3">
+                    <!-- Tautan link halaman Beranda versi mobile dengan warna teks sekunder abu-abu redup -->
                     <a href="index.html" class="text-decoration-none text-secondary">BERANDA</a>
+                    <!-- Tautan link halaman aktif Skuad versi mobile diwarnai putih terang pekat (text-white) -->
                     <a href="squad.html" class="text-decoration-none text-white">SKUAD</a>
+                    <!-- Tautan link halaman Pelatih versi mobile dengan warna teks sekunder abu-abu redup -->
                     <a href="pelatih.html" class="text-decoration-none text-secondary">PELATIH</a>
+                    <!-- Tautan link halaman Jadwal versi mobile dengan warna teks sekunder abu-abu redup -->
                     <a href="jadwal.html" class="text-decoration-none text-secondary">JADWAL</a>
+                    <!-- Tautan link halaman Berita versi mobile dengan warna teks sekunder abu-abu redup -->
                     <a href="berita.html" class="text-decoration-none text-secondary">BERITA</a>
                 </div>
+            <!-- Penutup bodi wadah isi menu offcanvas -->
             </div>
+        <!-- Penutup total baris menu responsif offcanvas mobile -->
         </div>
 
+        <!-- Bagian penampung konten utama web kamu yang ukurannya otomatis fleksibel memenuhi sisa area layar -->
         <main class="flex-grow-1">
+            <!-- Section khusus konten skuad dengan padding, animasi slide-up dari bawah, dan jarak atas mt-4 -->
             <section class="container-fluid px-4 py-5 slide-up mt-4">
+                <!-- Teks judul bagian skuad utama berukuran kecil-menengah (fs-4) tebal berjarak huruf renggang -->
                 <h2 class="font-heading fs-4 fw-bold mb-4" style="color:#ffffff; letter-spacing: 0.05em;">SKUAD UTAMA</h2>
+                <!-- Baris grid sistem Bootstrap: 2 kolom di HP (row-cols-2) dan otomatis sejajar 4 kolom di laptop (row-cols-md-4) -->
                 <div class="row row-cols-2 row-cols-md-4 g-3">
                     
+                    <!-- ========== PEMAIN 1: KIPER ========== -->
+                    <!-- Kolom untuk tempat peletakan komponen kartu pemain yang pertama -->
                     <div class="col">
+                        <!-- Kotak kartu pemain berlatar abu-abu gelap (#1a1a1a), teks rata tengah, sudut melengkung rounded-3 -->
                         <div class="rounded-3 p-4 text-center transition-transform" style="background:#1a1a1a;">
+                            <!-- Lingkaran merah nomor punggung ber-font heading ukuran besar fs-1 dengan letak otomatis rata tengah -->
                             <div class="mx-auto rounded-3 d-flex align-items-center justify-content-center mb-3 font-heading fw-bold fs-1" style="width: 80px; height: 80px; background:#c41e3a; color:#ffffff;">1</div>
+                            <!-- Menampilkan teks nama pemain menggunakan font heading semibold putih ukuran kecil -->
                             <div class="font-heading fw-semibold small" style="color:#ffffff;">Senne Lammens</div>
+                            <!-- Label keterangan penanda posisi bermain pemain (Kiper) berwarna abu-abu redup kecil -->
                             <div class="mt-1" style="color:#a3a3a3; font-size: 0.75rem;">Kiper</div>
+                        <!-- Penutup elemen kotak visual kartu pemain pertama -->
                         </div>
+                    <!-- Penutup elemen kolom pemain kesatu -->
                     </div>
                     
+                    <!-- ========== PEMAIN 2: AMF ========== -->
+                    <!-- Kolom untuk tempat peletakan komponen kartu pemain yang kedua -->
                     <div class="col">
+                        <!-- Kotak kartu pemain kedua berlatar abu-abu gelap rata tengah -->
                         <div class="rounded-3 p-4 text-center transition-transform" style="background:#1a1a1a;">
+                            <!-- Lingkaran nomor punggung 8 untuk kapten tim -->
                             <div class="mx-auto rounded-3 d-flex align-items-center justify-content-center mb-3 font-heading fw-bold fs-1" style="width: 80px; height: 80px; background:#c41e3a; color:#ffffff;">8</div>
+                            <!-- Menampilkan teks nama Bruno Fernandes lengkap beserta simbol emoji kapten -->
                             <div class="font-heading fw-semibold small" style="color:#ffffff;">Bruno Fernandes©️</div>
+                            <!-- Label keterangan penanda posisi bermain Attacking Midfielder (AMF) -->
                             <div class="mt-1" style="color:#a3a3a3; font-size: 0.75rem;">AMF</div>
+                        <!-- Penutup elemen kotak visual kartu pemain kedua -->
                         </div>
+                    <!-- Penutup elemen kolom pemain kedua -->
                     </div>
                     
+                    <!-- ========== PEMAIN 3: CMF ========== -->
+                    <!-- Kolom untuk tempat peletakan komponen kartu pemain yang ketiga -->
                     <div class="col">
+                        <!-- Kotak kartu pemain ketiga berlatar abu-abu gelap rata tengah -->
                         <div class="rounded-3 p-4 text-center transition-transform" style="background:#1a1a1a;">
+                            <!-- Lingkaran merah nomor punggung 37 -->
                             <div class="mx-auto rounded-3 d-flex align-items-center justify-content-center mb-3 font-heading fw-bold fs-1" style="width: 80px; height: 80px; background:#c41e3a; color:#ffffff;">37</div>
+                            <!-- Menampilkan nama gelandang muda Kobbie Mainoo -->
                             <div class="font-heading fw-semibold small" style="color:#ffffff;">Kobbie Mainoo</div>
+                            <!-- Label keterangan penanda posisi bermain Central Midfielder (CMF) -->
                             <div class="mt-1" style="color:#a3a3a3; font-size: 0.75rem;">CMF</div>
+                        <!-- Penutup elemen kotak visual kartu pemain ketiga -->
                         </div>
+                    <!-- Penutup elemen kolom pemain ketiga -->
                     </div>
                     
+                    <!-- ========== PEMAIN 4: DMF ========== -->
+                    <!-- Kolom untuk tempat peletakan komponen kartu pemain yang keempat -->
                     <div class="col">
+                        <!-- Kotak kartu pemain keempat berlatar abu-abu gelap rata tengah -->
                         <div class="rounded-3 p-4 text-center transition-transform" style="background:#1a1a1a;">
+                            <!-- Lingkaran merah nomor punggung 18 -->
                             <div class="mx-auto rounded-3 d-flex align-items-center justify-content-center mb-3 font-heading fw-bold fs-1" style="width: 80px; height: 80px; background:#c41e3a; color:#ffffff;">18</div>
+                            <!-- Menampilkan nama gelandang jangkar bertahan Casemiro -->
                             <div class="font-heading fw-semibold small" style="color:#ffffff;">Casemiro</div>
+                            <!-- Label keterangan penanda posisi bermain Defensive Midfielder (DMF) -->
                             <div class="mt-1" style="color:#a3a3a3; font-size: 0.75rem;">DMF</div>
+                        <!-- Penutup elemen kotak visual kartu pemain keempat -->
                         </div>
+                    <!-- Penutup elemen kolom pemain keempat -->
                     </div>
 
+                    <!-- ========== PEMAIN 5: CF ========== -->
+                    <!-- Kolom untuk tempat peletakan komponen kartu pemain yang kelima -->
                     <div class="col">
+                        <!-- Kotak kartu pemain kelima berlatar abu-abu gelap rata tengah -->
                         <div class="rounded-3 p-4 text-center transition-transform" style="background:#1a1a1a;">
+                            <!-- Lingkaran merah nomor punggung 9 -->
                             <div class="mx-auto rounded-3 d-flex align-items-center justify-content-center mb-3 font-heading fw-bold fs-1" style="width: 80px; height: 80px; background:#c41e3a; color:#ffffff;">9</div>
+                            <!-- Menampilkan nama penyerang tengah Benjamin Sesko -->
                             <div class="font-heading fw-semibold small" style="color:#ffffff;">Benjamin se'sko</div>
+                            <!-- Label keterangan penanda posisi bermain Center Forward (CF) -->
                             <div class="mt-1" style="color:#a3a3a3; font-size: 0.75rem;">CF</div>
+                        <!-- Penutup elemen kotak visual kartu pemain kelima -->
                         </div>
+                    <!-- Penutup elemen kolom pemain kelima -->
                     </div>
 
+                    <!-- ========== PEMAIN 6: LMF ========== -->
+                    <!-- Kolom untuk tempat peletakan komponen kartu pemain yang keenam -->
                     <div class="col">
+                        <!-- Kotak kartu pemain keenam berlatar abu-abu gelap rata tengah -->
                         <div class="rounded-3 p-4 text-center transition-transform" style="background:#1a1a1a;">
+                            <!-- Lingkaran merah nomor punggung 10 -->
                             <div class="mx-auto rounded-3 d-flex align-items-center justify-content-center mb-3 font-heading fw-bold fs-1" style="width: 80px; height: 80px; background:#c41e3a; color:#ffffff;">10</div>
+                            <!-- Menampilkan nama pemain sayap Matheus Cunha -->
                             <div class="font-heading fw-semibold small" style="color:#ffffff;">Matheus Cunha</div>
+                            <!-- Label keterangan penanda posisi bermain Left Midfielder (LMF) -->
                             <div class="mt-1" style="color:#a3a3a3; font-size: 0.75rem;">LMF</div>
+                        <!-- Penutup elemen kotak visual kartu pemain keenam -->
                         </div>
+                    <!-- Penutup elemen kolom pemain keenam -->
                     </div>
 
+                    <!-- ========== PEMAIN 7: RMF ========== -->
+                    <!-- Kolom untuk tempat peletakan komponen kartu pemain yang ketujuh -->
                     <div class="col">
+                        <!-- Kotak kartu pemain ketujuh berlatar abu-abu gelap rata tengah -->
                         <div class="rounded-3 p-4 text-center transition-transform" style="background:#1a1a1a;">
+                            <!-- Lingkaran merah nomor punggung 11 -->
                             <div class="mx-auto rounded-3 d-flex align-items-center justify-content-center mb-3 font-heading fw-bold fs-1" style="width: 80px; height: 80px; background:#c41e3a; color:#ffffff;">11</div>
+                            <!-- Menampilkan nama pemain sayap kanan Bryan Mbeumo -->
                             <div class="font-heading fw-semibold small" style="color:#ffffff;">Bryan Mbuemo</div>
+                            <!-- Label keterangan penanda posisi bermain Right Midfielder (RMF) -->
                             <div class="mt-1" style="color:#a3a3a3; font-size: 0.75rem;">RMF</div>
+                        <!-- Penutup elemen kotak visual kartu pemain ketujuh -->
                         </div>
+                    <!-- Penutup elemen kolom pemain ketujuh -->
                     </div>
 
+                    <!-- ========== PEMAIN 8: RB ========== -->
+                    <!-- Kolom untuk tempat peletakan komponen kartu pemain yang kedelapan -->
                     <div class="col">
+                        <!-- Kotak kartu pemain kedelapan berlatar abu-abu gelap rata tengah -->
                         <div class="rounded-3 p-4 text-center transition-transform" style="background:#1a1a1a;">
+                            <!-- Lingkaran merah nomor punggung 2 -->
                             <div class="mx-auto rounded-3 d-flex align-items-center justify-content-center mb-3 font-heading fw-bold fs-1" style="width: 80px; height: 80px; background:#c41e3a; color:#ffffff;">2</div>
+                            <!-- Menampilkan nama bek sayap kanan Diogo Dalot -->
                             <div class="font-heading fw-semibold small" style="color:#ffffff;">Diogo Dalot</div>
+                            <!-- Label keterangan penanda posisi bermain Right Back (RB) -->
                             <div class="mt-1" style="color:#a3a3a3; font-size: 0.75rem;">RB</div>
+                        <!-- Penutup elemen kotak visual kartu pemain kedelapan -->
                         </div>
+                    <!-- Penutup elemen kolom pemain kedelapan -->
                     </div>
 
+                    <!-- ========== PEMAIN 9: LB ========== -->
+                    <!-- Kolom untuk tempat peletakan komponen kartu pemain yang kesembilan -->
                     <div class="col">
+                        <!-- Kotak kartu pemain kesembilan berlatar abu-abu gelap rata tengah -->
                         <div class="rounded-3 p-4 text-center transition-transform" style="background:#1a1a1a;">
+                            <!-- Lingkaran merah nomor punggung 6 -->
                             <div class="mx-auto rounded-3 d-flex align-items-center justify-content-center mb-3 font-heading fw-bold fs-1" style="width: 80px; height: 80px; background:#c41e3a; color:#ffffff;">6</div>
+                            <!-- Menampilkan nama bek sayap kiri Luke Shaw -->
                             <div class="font-heading fw-semibold small" style="color:#ffffff;">Luke Shaw</div>
+                            <!-- Label keterangan penanda posisi bermain Left Back (LB) -->
                             <div class="mt-1" style="color:#a3a3a3; font-size: 0.75rem;">LB</div>
+                        <!-- Penutup elemen kotak visual kartu pemain kesembilan -->
                         </div>
+                    <!-- Penutup elemen kolom pemain kesembilan -->
                     </div>
 
+                    <!-- ========== PEMAIN 10: CB ========== -->
+                    <!-- Kolom untuk tempat peletakan komponen kartu pemain yang kesepuluh -->
                     <div class="col">
+                        <!-- Kotak kartu pemain kesepuluh berlatar abu-abu gelap rata tengah -->
                         <div class="rounded-3 p-4 text-center transition-transform" style="background:#1a1a1a;">
+                            <!-- Lingkaran merah nomor punggung 5 -->
                             <div class="mx-auto rounded-3 d-flex align-items-center justify-content-center mb-3 font-heading fw-bold fs-1" style="width: 80px; height: 80px; background:#c41e3a; color:#ffffff;">5</div>
+                            <!-- Menampilkan nama bek tengah Harry Maguire -->
                             <div class="font-heading fw-semibold small" style="color:#ffffff;">Harry Magure</div>
+                            <!-- Label keterangan penanda posisi bermain Center Back (CB) -->
                             <div class="mt-1" style="color:#a3a3a3; font-size: 0.75rem;">CB</div>
+                        <!-- Penutup elemen kotak visual kartu pemain kesepuluh -->
                         </div>
+                    <!-- Penutup elemen kolom pemain kesepuluh -->
                     </div>
 
+                    <!-- ========== PEMAIN 11: CB ========== -->
+                    <!-- Kolom untuk tempat peletakan komponen kartu pemain yang kesebelas sebagai penutup barisan skuad -->
                     <div class="col">
+                        <!-- Kotak kartu pemain kesebelas berlatar abu-abu gelap rata tengah -->
                         <div class="rounded-3 p-4 text-center transition-transform" style="background:#1a1a1a;">
+                            <!-- Lingkaran merah nomor punggung 4 -->
                             <div class="mx-auto rounded-3 d-flex align-items-center justify-content-center mb-3 font-heading fw-bold fs-1" style="width: 80px; height: 80px; background:#c41e3a; color:#ffffff;">4</div>
+                            <!-- Menampilkan nama bek tengah tangguh Lisandro Martinez -->
                             <div class="font-heading fw-semibold small" style="color:#ffffff;">Lisandro Martinez</div>
+                            <!-- Label keterangan posisi bermain Center Back (CB) -->
                             <div class="mt-1" style="color:#a3a3a3; font-size: 0.75rem;">CB</div>
+                        <!-- Penutup elemen kotak visual kartu pemain kesebelas -->
                         </div>
+                    <!-- Penutup elemen kolom pemain kesebelas -->
                     </div>
+                <!-- Penutup elemen baris data grid row barisan pemain skuad -->
                 </div>
+            <!-- Penutup total bagian section grid skuad utama -->
             </section>
+        <!-- Penutup tag area isi konten utama bodi main -->
         </main>
 
+        <!-- === BAGIAN FOOTER / AREA BAWAH HALAMAN === -->
+        <!-- Komponen penutup area bawah halaman yang otomatis dipaksa mengunci posisi di paling dasar berkat kelas mt-auto -->
         <footer class="container-fluid px-4 py-5 mt-auto text-center border-top" style="border-color:#222 !important;">
+            <!-- Nama pemegang hak cipta kepemilikan utama klub Manchester United ber-font heading putih kecil tebal -->
             <div class="font-heading fw-bold small" style="color:#ffffff;">MANCHESTER UNITED</div>
+            <!-- Teks pemberitahuan legalitas hak paten bertuliskan tahun rilis resmi 2026 ber-warna abu-abu tipis gelap -->
             <div class="mt-2" style="color:#555; font-size: 0.75rem;">© 2026 Manchester United Football Club. Semua hak dilindungi.</div>
             
+            <!-- Area susunan baris horizontal penampung tombol media sosial resmi aktif biar rata tengah -->
             <div class="d-flex justify-content-center gap-3 mt-3">
+                <!-- Tautan Medsos 1: Instagram (Membuka link tujuan resmi di tab browser baru lewat target="_blank") -->
                 <a href="https://www.instagram.com/manutd?igsh=YTk3YWY4Mndvb2F1" target="_blank" class="text-decoration-none">
+                    <!-- Pemanggilan berkas gambar lokal lambang logo Instagram transparan dari folder foto -->
                     <img src="foto/ig.png" alt="Instagram Logo" style="width: 24px; height: 24px; object-fit: contain;">
+                <!-- Penutup jangkar link instagram -->
                 </a> 
               
+                <!-- Tautan Medsos 2: YouTube (Membuka link tujuan resmi di tab browser baru lewat target="_blank") -->
                 <a href="https://www.youtube.com/manutd" target="_blank" class="text-decoration-none">
+                    <!-- Pemanggilan berkas gambar lokal lambang logo YouTube merah transparan dari folder foto -->
                     <img src="foto/yutub.png" alt="YouTube Logo" style="width: 26px; height: 26px; object-fit: contain;">
+                <!-- Penutup jangkar link youtube -->
                 </a>
+            <!-- Penutup area horizontal penampung tombol media sosial -->
             </div>
+        <!-- Tag penutup elemen footer bawah web -->
         </footer>
+    <!-- Penutup pembungkus utama aplikasi ber-id app -->
     </div>
     
+    <!-- Memanggil berkas online JavaScript Bootstrap 5 bundle untuk mengaktifkan seluruh komponen responsif klik (seperti offcanvas HP) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     
+    <!-- Perintah eksekusi inisialisasi skrip Lucide agar seluruh ikon berkode data-lucide bisa otomatis muncul sempurna -->
     <script>
         lucide.createIcons();
     </script>
     
+    <!-- Menghubungkan berkas logika skrip buatan sendiri bernama file script.js dari direktori lokal laptop Anda -->
     <script src="script.js"></script>
+<!-- Tag penutup bodi utama dokumen HTML -->
 </body>
+<!-- Tag penutup penanda akhir dari seluruh baris dokumen kode website -->
 </html>

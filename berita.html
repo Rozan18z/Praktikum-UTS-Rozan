@@ -1,153 +1,240 @@
-<!-- Dokumen HTML5 standar -->
+<!-- Menandakan bahwa dokumen ini ditulis menggunakan standar spesifikasi HTML5 terbaru -->
 <!doctype html>
-<!-- Tag pembuka HTML, pakai bahasa Indonesia (id) dan tinggi layar penuh (h-100) -->
+<!-- Tag pembuka utama HTML dengan pengaturan bahasa Indonesia (id) dan tinggi halaman penuh (h-100) -->
 <html lang="id" class="h-100">
-<!-- Bagian head untuk memuat metadata, judul tab, serta tautan berkas CSS dan pustaka -->
+<!-- Bagian head digunakan untuk menyimpan metadata halaman, judul tab browser, serta pemanggilan file luar -->
 <head>
-    <!-- Settingan format teks UTF-8 biar semua karakter/simbol muncul dengan bener -->
+    <!-- Menentukan encoding karakter UTF-8 agar semua teks, simbol, dan emotikon terbaca dengan benar oleh browser -->
     <meta charset="UTF-8">
-    <!-- Biar tampilan web otomatis pas dan responsive saat dibuka di HP atau laptop -->
+    <!-- Mengatur responsive agar ukuran dan skala visual website otomatis pas saat dibuka di layar HP maupun laptop -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Judul yang bakal muncul di bagian atas tab browser kamu -->
+    <!-- Judul halaman web yang akan muncul pada bagian tab atas browser Anda -->
     <title>Berita - Manchester United</title>
-    <!-- Manggil CSS Bootstrap 5 online buat ngatur layout biar gak usah bikin dari nol -->
+    <!-- Memanggil library CSS Framework Bootstrap 5 via online CDN untuk menyusun tata letak layout secara instan -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Manggil script Lucide Icons online buat nampilin ikon-ikon di web -->
+    <!-- Memanggil library skrip Lucide Icons online untuk kebutuhan penggunaan ikon berbasis teks di halaman web -->
     <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
-    <!-- Ngambil font Oswald (buat judul) dan Source Sans 3 (buat teks biasa) dari Google Fonts -->
+    <!-- Ngambil font Oswald (buat judul) dan Source Sans 3 (buat teks biasa) dari server Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
-    <!-- Hubungin ke file CSS buatan kamu sendiri yang namanya style.css -->
+    <!-- Hubungin ke file CSS buatan kamu sendiri yang namanya global.css untuk kustomisasi gaya tampilan -->
     <link rel="stylesheet" href="global.css">
-<!-- Penutup bagian head -->
+<!-- Penutup bagian head dokumen -->
 </head>
-<!-- Tag body tempat semua isi web ditulis, pakai background hitam pekat dan scrollbar vertikal otomatis -->
+<!-- Tag body tempat semua isi web ditulis, pakai background hitam pekat, font kustom, dan scrollbar vertikal otomatis -->
 <body class="h-100 font-body" style="background:#0f0f0f; overflow-y: auto;">
-    <!-- Wadah paling luar buat bungkus semua konten, tingginya minimal penuh se-layar -->
+    <!-- Wadah paling luar buat bungkus semua konten, lebar penuh, tingginya minimal penuh se-layar, berbentuk flexbox vertikal -->
     <div id="app" class="w-100 min-vh-100 text-white d-flex flex-column" style="background:#0f0f0f;">
         
-        <!-- === BAGIAN NAVIGASI / NAVBAR === -->
+        <!-- === BAGIAN NAVIGASI UTAMA / NAVBAR === -->
+        <!-- Garis navigasi atas menggunakan flexbox untuk memisahkan isi kiri dan kanan secara otomatis dengan batas border bawah -->
         <nav class="navbar navbar-dark w-100 d-flex align-items-center justify-content-between px-4 py-3 border-bottom" style="border-color: #1f2937 !important; background: #0f0f0f;">
-            <!-- Sisi Kiri: Logo dan Nama Klub -->
+            <!-- Sisi Kiri Navbar: Wadah flexbox untuk mengatur jarak sela (gap-3) antara logo gambar klub dan teks nama klub -->
             <div class="d-flex align-items-center gap-3">
+                <!-- Manggil gambar logo MU yang kamu simpan di dalam folder foto lokal laptop Anda -->
                 <img src="foto/emyu.png" alt="MU Logo" class="object-fit-contain" style="width: 40px; height: 40px;">
+                <!-- Tulisan nama klub pakai font heading, ukuran sedang (fs-5), warna putih, teksnya tebal -->
                 <span class="font-heading fs-5 fw-bold" style="color:#ffffff;">MANCHESTER UNITED</span>
+            <!-- Penutup wadah logo dan nama klub sebelah kiri -->
             </div>
             
-            <!-- Sisi Kanan: Tautan Menu Utama (Layar Laptop/Tablet) -->
+            <!-- Sisi Kanan Navbar: Barisan menu link navigasi utama yang otomatis disembunyikan jika dibuka di layar HP (d-none d-md-flex) -->
             <div class="d-none d-md-flex gap-4 small fw-semibold" style="color:#a3a3a3; letter-spacing: 0.05em;">
+                <!-- Link menu biasa menuju ke file Beranda (index.html) dengan warna teks sekunder abu-abu -->
                 <a href="index.html" class="text-decoration-none text-secondary text-white-hover transition">BERANDA</a> 
+                <!-- Link menu biasa menuju ke halaman Skuad Pemain dengan teks sekunder abu-abu -->
                 <a href="squad.html" class="text-decoration-none text-secondary text-white-hover transition">SKUAD</a> 
+                <!-- Link menu biasa menuju ke halaman profil data Tim Pelatih -->
                 <a href="pelatih.html" class="text-decoration-none text-secondary text-white-hover transition">PELATIH</a> 
+                <!-- Link menu biasa menuju ke halaman info Jadwal Pertandingan -->
                 <a href="jadwal.html" class="text-decoration-none text-secondary text-white-hover transition">JADWAL</a> 
-                <a href="berita.html" class="text-decoration-none text-white transition">BERITA</a> <!-- Aktif -->
+                <!-- Link menu aktif Berita dengan warna putih terang benderang sebagai penanda posisi halaman saat ini -->
+                <a href="berita.html" class="text-white transition">BERITA</a> <!-- Aktif -->
+            <!-- Penutup wadah menu link navigasi komputer -->
             </div>
             
-            <!-- Tombol burger menu kustom (Menggunakan CSS murni agar garis tiga putih selalu muncul di HP) -->
+            <!-- Tombol burger menu kustom yang menggunakan 3 baris garis murni CSS agar dijamin selalu muncul berwarna putih pekat di HP -->
             <button class="d-md-none border-0 p-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-label="Toggle navigation" style="background: transparent;">
+                <!-- Wadah fleksibel vertikal bersela rata untuk menampung ketiga baris garis hamburger -->
                 <div style="width: 24px; height: 18px; display: flex; flex-direction: column; justify-content: space-between;">
+                    <!-- Garis hamburger kesatu berbentuk persegi panjang putih tipis dengan tinggi 2px -->
                     <span style="display: block; width: 100%; height: 2px; background-color: #ffffff;"></span>
+                    <!-- Garis hamburger kedua berbentuk persegi panjang putih tipis dengan tinggi 2px -->
                     <span style="display: block; width: 100%; height: 2px; background-color: #ffffff;"></span>
+                    <!-- Garis hamburger ketiga berbentuk persegi panjang putih tipis dengan tinggi 2px -->
                     <span style="display: block; width: 100%; height: 2px; background-color: #ffffff;"></span>
+                <!-- Penutup wadah garis kustom hamburger -->
                 </div>
+            <!-- Penutup elemen tombol burger menu layar HP -->
             </button>
+        <!-- Penutup tag elemen navigasi navbar atas -->
         </nav>
 
         <!-- === MENU RESPONSIF LAYAR HP (OFFCANVAS) === -->
+        <!-- Kotak wadah menu tarik samping yang meluncur dari arah kanan, aktif hanya di resolusi layar smartphone saja -->
         <div class="offcanvas offcanvas-end text-bg-dark d-md-none" tabindex="-1" id="mobileMenu" style="background-color: #0f0f0f !important;">
+            <!-- Bagian kepala menu offcanvas yang berisi judul navigasi dan tombol silang penutup (close) -->
             <div class="offcanvas-header border-bottom" style="border-color: #1f2937 !important;">
+                <!-- Teks judul menu samping menggunakan susunan font heading kapital tebal -->
                 <h5 class="offcanvas-title font-heading fw-bold">MENU NAVIGASI</h5>
+                <!-- Tombol ikon silang putih bawaan Bootstrap untuk menutup jendela menu mobile tarik samping -->
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            <!-- Penutup bagian kepala menu offcanvas -->
             </div>
+            <!-- Bagian badan inti menu offcanvas untuk menampung barisan tautan menu responsif HP -->
             <div class="offcanvas-body">
-                <!-- Tautan Menu HP: BERITA diberi class text-white (aktif), sisanya text-secondary -->
+                <!-- Tautan Menu HP: BERITA diberi class text-white (aktif), sisanya diberi warna sekunder abu-abu -->
                 <div class="d-flex flex-column gap-4 fw-semibold fs-5 mt-3">
+                    <!-- Tautan tidak aktif halaman Beranda di HP diwarnai abu-abu redup (text-secondary) -->
                     <a href="index.html" class="text-decoration-none text-secondary">BERANDA</a>
+                    <!-- Tautan tidak aktif halaman Skuad di HP diwarnai abu-abu redup -->
                     <a href="squad.html" class="text-decoration-none text-secondary">SKUAD</a>
+                    <!-- Tautan tidak aktif halaman Pelatih di HP diwarnai abu-abu redup -->
                     <a href="pelatih.html" class="text-decoration-none text-secondary">PELATIH</a>
+                    <!-- Tautan tidak aktif halaman Jadwal di HP diwarnai abu-abu redup -->
                     <a href="jadwal.html" class="text-decoration-none text-secondary">JADWAL</a>
+                    <!-- Tautan aktif halaman Berita di HP diwarnai putih pekat terang (text-white) -->
                     <a href="berita.html" class="text-decoration-none text-white">BERITA</a>
                 </div>
+            <!-- Penutup bagian badan menu offcanvas -->
             </div>
+        <!-- Penutup wadah komponen responsif offcanvas mobile menu -->
         </div>
 
-        <!-- Bagian penampung konten utama web kamu yang ukurannya fleksibel -->
+        <!-- Bagian penampung konten utama web kamu yang ukurannya otomatis fleksibel memenuhi sisa area layar -->
         <main class="flex-grow-1">
+            <!-- Bungkus halaman berita pakai container, dikasih padding, jarak atas, serta efek animasi slide-up dari bawah -->
             <section class="container-fluid px-4 py-5 slide-up mt-4">
+                <!-- Judul bagian berita terbaru, teksnya putih, tebal, menggunakan font heading, dan hurufnya agak renggang -->
                 <h2 class="font-heading fs-4 fw-bold mb-4" style="color:#ffffff; letter-spacing: 0.05em;">BERITA TERBARU</h2>
+                <!-- Grid system Bootstrap: otomatis sejajar 3 kotak di laptop (row-cols-md-3), and menumpuk 1 kotak kalau di HP (row-cols-1) -->
                 <div class="row row-cols-1 row-cols-md-3 g-3">
                     
-                    <!-- BERITA 1 -->
+                    <!-- ========== BERITA 1 ========== -->
+                    <!-- Kolom untuk tempat peletakan komponen kartu berita yang pertama -->
                     <div class="col">
+                        <!-- Kotak kartu berita berlatar abu-abu gelap (#1a1a1a), tinggi penuh mengikuti card lain, sudut melengkung, dan ada efek transisi -->
                         <div class="rounded-3 overflow-hidden h-100 transition-transform" style="background:#1a1a1a;">
+                            <!-- Pembungkus gambar berita dengan tinggi pas 140px, sisa gambarnya dipotong rapi agar seragam -->
                             <div style="height: 140px; width: 100%; overflow: hidden;">
+                                <!-- Manggil file gambar berita menang.jpg yang ada di dalam folder foto lokal Anda -->
                                 <img src="foto/menang.jpg" alt="Foto Berita 1" style="width: 100%; height: 100%; object-fit: cover;">
+                            <!-- Penutup pembungkus gambar berita 1 -->
                             </div>
+                            <!-- Bagian badan teks di dalam kotak berita dengan padding p-4 untuk memberi sela jarak -->
                             <div class="p-4">
+                                <!-- Tulisan tanggal rilis berita warna merah, ukuran kecil, dengan format ketebalan semibold -->
                                 <div class="mb-2 fw-semibold" style="color:#c41e3a; font-size: 0.75rem;">18 Feb 2026</div>
+                                <!-- Judul berita pertama menggunakan font heading khusus, teks putih, tebal, dan ukuran sedang (fs-6) -->
                                 <div class="font-heading fw-bold fs-6" style="color:#ffffff;">Manchester United Raih Kemenangan</div>
+                                <!-- Paragraf ringkasan isi artikel berita warna abu-abu tulisan kecil dengan jarak spasi baris renggang (lh-lg) -->
                                 <p class="mt-2 mb-0 lh-lg" style="color:#a3a3a3; font-size: 0.75rem;">Tim berhasil menang 3-1 melawan Fulham dalam pertandingan Premier league.</p>
+                            <!-- Penutup bagian teks berita 1 -->
                             </div>
+                        <!-- Penutup elemen kotak visual kartu berita pertama -->
                         </div>
+                    <!-- Penutup elemen kolom berita kesatu -->
                     </div>
                     
-                    <!-- BERITA 2 -->
+                    <!-- ========== BERITA 2 ========== -->
+                    <!-- Kolom untuk tempat peletakan komponen kartu berita yang kedua -->
                     <div class="col">
+                        <!-- Kotak kartu berita kedua berlatar abu-abu gelap, sudut melengkung, tinggi penuh, dan memiliki efek gerak -->
                         <div class="rounded-3 overflow-hidden h-100 transition-transform" style="background:#1a1a1a;">
+                            <!-- Pembungkus gambar berita kedua tinggi pas 140px, sisa area gambar dipangkas otomatis -->
                             <div style="height: 140px; width: 100%; overflow: hidden;">
+                                <!-- Manggil file gambar berita tranfer.jpg yang ada di dalam folder foto lokal Anda -->
                                 <img src="foto/tranfer.jpg" alt="Foto Berita 2" style="width: 100%; height: 100%; object-fit: cover;">
+                            <!-- Penutup pembungkus gambar berita 2 -->
                             </div>
+                            <!-- Bagian badan teks di dalam kotak berita kedua -->
                             <div class="p-4">
+                                <!-- Tulisan tanggal rilis artikel berita kedua berwarna merah kecil agak tebal -->
                                 <div class="mb-2 fw-semibold" style="color:#c41e3a; font-size: 0.75rem;">15 Feb 2026</div>
+                                <!-- Judul utama artikel berita kedua menggunakan font heading, teks putih, dan tebal -->
                                 <div class="font-heading fw-bold fs-6" style="color:#ffffff;">Transfer Pemain Terbaru</div>
+                                <!-- Paragraf teks deskripsi pendek rangkuman isi berita kedua warna abu-abu kecil tulisan renggang -->
                                 <p class="mt-2 mb-0 lh-lg" style="color:#a3a3a3; font-size: 0.75rem;">Klub resmi menandatangani kontrak dengan pemain bintang dari Eropa. Beberapa nama besar seperti Matheus Cunha, Bryan Mbuemo dan Benjamin Se'sko.</p>
+                            <!-- Penutup bagian teks berita 2 -->
                             </div>
+                        <!-- Penutup elemen kotak visual kartu berita kedua -->
                         </div>
+                    <!-- Penutup elemen kolom berita kedua -->
                     </div>
                     
-                    <!-- BERITA 3 -->
+                    <!-- ========== BERITA 3 ========== -->
+                    <!-- Kolom untuk tempat peletakan komponen kartu berita yang ketiga -->
                     <div class="col">
+                        <!-- Kotak kartu berita ketiga berlatar abu-abu gelap, sudut melengkung, tinggi penuh, dan memiliki efek gerak -->
                         <div class="rounded-3 overflow-hidden h-100 transition-transform" style="background:#1a1a1a;">
+                            <!-- Pembungkus gambar berita ketiga tinggi pas 140px, sisa area gambar dipangkas otomatis -->
                             <div style="height: 140px; width: 100%; overflow: hidden;">
+                                <!-- Manggil file gambar berita tsunami.jpg yang ada di dalam folder foto lokal Anda -->
                                 <img src="foto/tsunami.jpg" alt="Foto Berita 3" style="width: 100%; height: 100%; object-fit: cover;">
+                            <!-- Penutup pembungkus gambar berita 3 -->
                             </div>
+                            <!-- Bagian badan teks di dalam kotak berita ketiga -->
                             <div class="p-4">
+                                <!-- Tulisan tanggal rilis artikel berita ketiga berwarna merah kecil agak tebal -->
                                 <div class="mb-2 fw-semibold" style="color:#c41e3a; font-size: 0.75rem;">10 Feb 2026</div>
+                                <!-- Judul utama artikel berita ketiga menggunakan font heading, teks putih, dan tebal -->
                                 <div class="font-heading fw-bold fs-6" style="color:#ffffff;">Prediksi Musim Depan</div>
+                                <!-- Paragraf teks deskripsi pendek rangkuman isi berita ketiga warna abu-abu kecil tulisan renggang -->
                                 <p class="mt-2 mb-0 lh-lg" style="color:#a3a3a3; font-size: 0.75rem;">Man United diprediksi akan tsunami trofi, dikarenakan squad mereka sudah sangat matang dibandingkan tim di Premier League lain.</p>
+                            <!-- Penutup bagian teks berita 3 -->
                             </div>
+                        <!-- Penutup elemen kotak visual kartu berita ketiga -->
                         </div>
+                    <!-- Penutup elemen kolom berita ketiga -->
                     </div>
 
+                <!-- Penutup elemen bodi susunan pembungkus grid baris row -->
                 </div>
+            <!-- Penutup komponen bagian section kumpulan kartu berita terbaru -->
             </section>
+        <!-- Penutup tag pembawa area konten utama main -->
         </main>
 
-        <!-- Bagian footer bawah halaman -->
+        <!-- === BAGIAN FOOTER / AREA BAWAH WEBSITE === -->
+        <!-- Bagian kaki bawah halaman, otomatis mengunci posisi nempel di paling dasar layar karena class utilitas mt-auto -->
         <footer class="container-fluid px-4 py-5 mt-auto text-center border-top" style="border-color:#222 !important;">
+            <!-- Tulisan merek dagang nama klub Manchester United di kaki web, tebal kecil berwarna putih -->
             <div class="font-heading fw-bold small" style="color:#ffffff;">MANCHESTER UNITED</div>
+            <!-- Informasi rilis catatan kecil legalitas hak cipta copyright tahun 2026 berwarna redup gelap -->
             <div class="mt-2" style="color:#555; font-size: 0.75rem;">© 2026 Manchester United Football Club. Semua hak dilindungi.</div>
             
+            <!-- Area susunan baris horizontal penampung tombol media sosial resmi aktif biar posisinya rata tengah -->
             <div class="d-flex justify-content-center gap-3 mt-3">
+                <!-- Tautan Medsos 1: Instagram (Membuka link tujuan resmi di tab browser baru lewat parameter target="_blank") -->
                 <a href="https://www.instagram.com/manutd?igsh=YTk3YWY4Mndvb2F1" target="_blank" class="text-decoration-none">
+                    <!-- Pemanggilan asset file gambar lambang logo Instagram transparan lokal dari folder bernama foto -->
                     <img src="foto/ig.png" alt="Instagram Logo" style="width: 24px; height: 24px; object-fit: contain;">
+                <!-- Penutup link jangkar medos instagram -->
                 </a> 
               
+                <!-- Tautan Medsos 2: YouTube (Membuka link tujuan resmi di tab browser baru lewat parameter target="_blank") -->
                 <a href="https://www.youtube.com/manutd" target="_blank" class="text-decoration-none">
+                    <!-- Pemanggilan asset file gambar lambang logo YouTube merah transparan lokal dari folder bernama foto -->
                     <img src="foto/yutub.png" alt="YouTube Logo" style="width: 26px; height: 26px; object-fit: contain;">
+                <!-- Penutup link jangkar medsos youtube -->
                 </a>
+            <!-- Penutup area horizontal susunan tombol ikon media sosial -->
             </div>
+        <!-- Tag penutup elemen footer bawah halaman -->
         </footer>
+    <!-- Penutup tag pembungkus paling luar seluruh aplikasi (div id="app") -->
     </div>
     
-    <!-- Manggil file JavaScript Bootstrap 5 online bundle -->
+    <!-- Manggil file JavaScript Bootstrap 5 online bundle via online CDN untuk aktifin fungsi klik komponen responsif seperti offcanvas HP -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     
-    <!-- Inisialisasi Lucide Icons -->
+    <!-- Perintah eksekusi awal pemicu library Lucide agar semua penulisan ikon data-lucide terwujud sempurna di browser -->
     <script>
         lucide.createIcons();
     </script>
     
-    <!-- Hubungin ke file logika kustom buatan kamu sendiri yang namanya script.js -->
+    <!-- Hubungin ke file berkas logika JavaScript kustom buatan sendiri yang namanya script.js lokal -->
     <script src="script.js"></script>
+<!-- Tag penutup bodi utama dokumen HTML -->
 </body>
+<!-- Tag penutup penanda akhir dari seluruh baris baris kode dokumen website -->
 </html>

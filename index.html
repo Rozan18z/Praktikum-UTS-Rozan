@@ -1,128 +1,241 @@
+<!-- Menandakan bahwa dokumen ini menggunakan standar spesifikasi HTML5 terbaru -->
 <!doctype html>
+<!-- Tag pembuka utama HTML dengan pengaturan bahasa Indonesia (id) dan tinggi halaman penuh (h-100) -->
 <html lang="id" class="h-100">
+<!-- Bagian head digunakan untuk menyimpan informasi metadata halaman, judul tab, serta pemanggilan file CSS luar -->
 <head>
+    <!-- Menentukan encoding karakter UTF-8 agar semua teks, simbol, dan emotikon terbaca dengan benar di browser -->
     <meta charset="UTF-8">
+    <!-- Mengatur responsive agar ukuran dan skala visual website otomatis pas saat dibuka di layar HP maupun laptop -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Judul halaman web yang akan muncul pada bagian tab atas browser Anda -->
     <title>Beranda - Manchester United</title>
     
+    <!-- Memanggil library CSS Framework Bootstrap 5 via online CDN untuk menyusun tata letak layout secara instan -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     
+    <!-- Memanggil library skrip Lucide Icons online untuk kebutuhan penggunaan ikon berbasis teks di halaman web -->
     <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+    <!-- Mengambil kombinasi rumpun font Oswald (untuk heading/judul) dan Source Sans 3 (untuk bodi teks) dari server Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
     
+    <!-- Memanggil file stylesheet eksternal buatan sendiri bernama style.css untuk kustomisasi desain tambahan -->
     <link rel="stylesheet" href="style.css">
+<!-- Penutup dari bagian head dokumen -->
 </head>
+<!-- Membuka tag body dengan jenis font bodi kustom, tinggi halaman 100%, background hitam pekat, dan scrollbar vertikal otomatis -->
 <body class="h-100 font-body" style="background:#0f0f0f; overflow-y: auto;">
+    <!-- Wadah pembungkus paling luar seluruh aplikasi dengan background hitam, lebar penuh, dan tinggi minimal se-layar -->
     <div id="app" class="w-100 min-vh-100 text-white d-flex flex-column" style="background:#0f0f0f;">
         
+        <!-- === BAGIAN NAVIGASI UTAMA / NAVBAR === -->
+        <!-- Garis navigasi atas menggunakan flexbox untuk memisahkan isi kiri dan kanan secara otomatis dengan batas border bawah -->
         <nav class="navbar navbar-dark w-100 d-flex align-items-center justify-content-between px-4 py-3 border-bottom" style="border-color: #1f2937 !important; background: #0f0f0f;">
+            <!-- Sisi Kiri Navbar: Wadah flexbox untuk mengatur jarak sela (gap-3) antara logo gambar klub dan teks nama klub -->
             <div class="d-flex align-items-center gap-3">
+                <!-- Memanggil file asset gambar logo Manchester United dari dalam folder foto lokal Anda -->
                 <img src="foto/emyu.png" alt="MU Logo" class="object-fit-contain" style="width: 40px; height: 40px;">
+                <!-- Teks nama klub utama menggunakan format font khusus heading, berukuran sedang (fs-5), tebal, dan berwarna putih -->
                 <span id="nav-club-name" class="font-heading fs-5 fw-bold" style="color:#ffffff;">MANCHESTER UNITED</span>
+            <!-- Penutup wadah logo dan nama klub sebelah kiri -->
             </div>
             
+            <!-- Sisi Kanan Navbar: Barisan menu link navigasi utama yang otomatis disembunyikan jika dibuka di layar HP (d-none d-md-flex) -->
             <div class="d-none d-md-flex gap-4 small fw-semibold" style="color:#a3a3a3; letter-spacing: 0.05em;">
+                <!-- Link menu aktif Beranda menuju ke file index.html dengan teks putih terang -->
                 <a href="index.html" class="text-decoration-none text-white transition">BERANDA</a> 
+                <!-- Link menu biasa menuju ke halaman Skuad Pemain dengan teks sekunder abu-abu -->
                 <a href="squad.html" class="text-decoration-none text-secondary text-white-hover transition">SKUAD</a> 
+                <!-- Link menu biasa menuju ke halaman Profil data Tim Pelatih -->
                 <a href="pelatih.html" class="text-decoration-none text-secondary text-white-hover transition">PELATIH</a> 
+                <!-- Link menu biasa menuju ke halaman info Jadwal Pertandingan -->
                 <a href="jadwal.html" class="text-decoration-none text-secondary text-white-hover transition">JADWAL</a> 
+                <!-- Link menu biasa menuju ke halaman artikel rangkuman Berita Terbaru -->
                 <a href="berita.html" class="text-decoration-none text-secondary text-white-hover transition">BERITA</a>
+            <!-- Penutup wadah barisan tautan menu navigasi layar komputer -->
             </div>
             
+            <!-- Tombol burger menu kustom yang menggunakan 3 baris garis murni CSS agar dijamin selalu muncul berwarna putih pekat di HP -->
             <button class="d-md-none border-0 p-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-label="Toggle navigation" style="background: transparent;">
+                <!-- Wadah fleksibel vertikal bersela rata untuk menampung ketiga baris garis hamburger -->
                 <div style="width: 24px; height: 18px; display: flex; flex-direction: column; justify-content: space-between;">
+                    <!-- Garis hamburger pertama berbentuk persegi panjang putih tipis tinggi 2px -->
                     <span style="display: block; width: 100%; height: 2px; background-color: #ffffff;"></span>
+                    <!-- Garis hamburger kedua berbentuk persegi panjang putih tipis tinggi 2px -->
                     <span style="display: block; width: 100%; height: 2px; background-color: #ffffff;"></span>
+                    <!-- Garis hamburger ketiga berbentuk persegi panjang putih tipis tinggi 2px -->
                     <span style="display: block; width: 100%; height: 2px; background-color: #ffffff;"></span>
+                <!-- Penutup wadah garis kustom hamburger -->
                 </div>
+            <!-- Penutup elemen tombol burger menu layar HP -->
             </button>
+        <!-- Penutup tag elemen navigasi atas web -->
         </nav>
 
+        <!-- === MENU RESPONSIF LAYAR HP (OFFCANVAS) === -->
+        <!-- Kotak wadah menu tarik samping yang meluncur dari arah kanan, aktif hanya di resolusi layar smartphone saja -->
         <div class="offcanvas offcanvas-end text-bg-dark d-md-none" tabindex="-1" id="mobileMenu" style="background-color: #0f0f0f !important;">
+            <!-- Bagian kepala menu offcanvas yang berisi judul navigasi dan tombol silang penutup (close) -->
             <div class="offcanvas-header border-bottom" style="border-color: #1f2937 !important;">
+                <!-- Teks judul menu samping menggunakan font heading kapital tebal -->
                 <h5 class="offcanvas-title font-heading fw-bold">MENU NAVIGASI</h5>
+                <!-- Tombol ikon silang putih bawaan Bootstrap untuk menutup paksa jendela menu mobile samping -->
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            <!-- Penutup bagian kepala menu offcanvas -->
             </div>
+            <!-- Bagian badan inti menu offcanvas untuk menampung barisan tautan menu responsif HP -->
             <div class="offcanvas-body">
+                <!-- Susunan susun ke bawah vertikal (flex-column) bersela longgar untuk daftar link internal HP -->
                 <div class="d-flex flex-column gap-4 fw-semibold fs-5 mt-3">
+                    <!-- Tautan aktif halaman Beranda di HP diwarnai putih pekat (text-white) -->
                     <a href="index.html" class="text-decoration-none text-white">BERANDA</a>
+                    <!-- Tautan tidak aktif halaman Skuad di HP diwarnai abu-abu redup (text-secondary) -->
                     <a href="squad.html" class="text-decoration-none text-secondary">SKUAD</a>
+                    <!-- Tautan tidak aktif halaman Pelatih di HP -->
                     <a href="pelatih.html" class="text-decoration-none text-secondary">PELATIH</a>
+                    <!-- Tautan tidak aktif halaman Jadwal di HP -->
                     <a href="jadwal.html" class="text-decoration-none text-secondary">JADWAL</a>
+                    <!-- Tautan tidak aktif halaman Berita di HP -->
                     <a href="berita.html" class="text-decoration-none text-secondary">BERITA</a>
                 </div>
+            <!-- Penutup bagian badan menu offcanvas -->
             </div>
+        <!-- Penutup wadah komponen responsif offcanvas mobile menu -->
         </div>
 
+        <!-- === KONTEN BERANDA UTAMA WEBSITE === -->
+        <!-- Tag elemen main pembawa konten isi utama halaman yang diatur otomatis tumbuh fleksibel memenuhi layar browser -->
         <main class="flex-grow-1">
             
+            <!-- 1. Hero Section (Bagian Penyambutan Utama Tepat di Tengah Atas Layar) -->
+            <!-- Menggunakan class slide-up untuk memicu animasi transisi gerakan muncul secara halus dari bawah -->
             <section id="home" class="w-100 px-4 py-5 py-md-5 d-flex flex-column align-items-center text-center slide-up mt-5">
+                <!-- Logo lambang klub Manchester United berukuran besar (96px) di tengah bagian penyambutan -->
                 <img src="foto/emyu.png" alt="MU Crest" class="object-fit-contain mb-4" style="width: 96px; height: 96px;">
+                <!-- Judul utama bodi berfont heading tebal, ukuran raksasa 3.5rem, huruf rapat berwarna putih -->
                 <h1 id="hero-club-name" class="font-heading fw-bold" style="color:#ffffff; letter-spacing: -0.02em; font-size: 3.5rem;">MANCHESTER UNITED</h1>
+                <!-- Slogan kebanggaan klub "Glory Glory Man United" dengan format huruf kapital tipis abu-abu redup -->
                 <p id="hero-slogan" class="mt-3 fs-5 fw-light" style="color:#a3a3a3; letter-spacing: 0.05em;">GLORY GLORY MAN UNITED</p>
+                <!-- Area penampung dua tombol akses navigasi pintas cepat di bawah teks slogan -->
                 <div class="mt-5 d-flex gap-3">
+                    <!-- Tombol outline putih kotak melengkung tipis mengarah langsung ke halaman jadwal.html -->
                     <a href="jadwal.html" class="btn btn-outline-light font-heading fw-semibold rounded-1 px-4 py-2" style="border-color:#555; font-size: 0.875rem;">LIHAT JADWAL</a> 
+                    <!-- Tombol outline putih kotak melengkung tipis mengarah langsung ke halaman squad.html -->
                     <a href="squad.html" class="btn btn-outline-light font-heading fw-semibold rounded-1 px-4 py-2" style="border-color:#555; font-size: 0.875rem;">SKUAD KAMI</a>
+                <!-- Penutup area tombol navigasi cepat -->
                 </div>
+            <!-- Penutup komponen bagian hero section beranda -->
             </section>
 
+            <!-- 2. Stats Section (Bagian Grid Susunan Kotak Informasi Pencapaian Statistik Sejarah Klub) -->
             <section class="container-fluid px-4 py-5 slide-up slide-up-d1 mt-4">
+                <!-- Membuat baris grid pembungkus (Row) dengan sela jarak antar kotak sebesar g-3 -->
                 <div class="row g-3">
                     
+                    <!-- ========== KOTAK STATISTIK 1: KEMENANGAN ========== -->
+                    <!-- Menentukan ukuran lebar kolom: selebar 2 kotak di HP (col-6) dan otomatis sejajar 4 kotak di laptop (col-md-3) -->
                     <div class="col-6 col-md-3">
+                        <!-- Kotak kartu bodi statistik rata tengah berlatar belakang warna abu-abu gelap dengan ujung melengkung -->
                         <div class="text-center p-4 rounded-3" style="background:#1a1a1a;">
+                            <!-- Menampilkan angka capaian 50,000 berukuran besar, tebal, diwarnai merah menyala khas klub MU -->
                             <div class="font-heading fs-2 fw-bold" style="color:#c41e3a;">50,000</div>
+                            <!-- Label keterangan penanda data kecil huruf kapital abu-abu diletakkan tepat di bawah angka -->
                             <div class="small mt-1" style="color:#a3a3a3; font-size: 0.75rem;">KEMENANGAN</div>
+                        <!-- Penutup kotak bodi kartu statistik kesatu -->
                         </div>
+                    <!-- Penutup kolom grid statistik kesatu -->
                     </div>
                     
+                    <!-- === KOTAK STATISTIK 2: GOL DICETAK === -->
+                    <!-- Kolom grid responsif penampung kotak statistik yang kedua -->
                     <div class="col-6 col-md-3">
+                        <!-- Kotak kartu bodi statistik rata tengah berlatar abu-abu gelap -->
                         <div class="text-center p-4 rounded-3" style="background:#1a1a1a;">
+                            <!-- Menampilkan total data 10,000 gol dicetak menggunakan font tajam khusus heading -->
                             <div class="font-heading fs-2 fw-bold" style="color:#c41e3a;">10,000</div>
+                            <!-- Label teks keterangan penjelas berukuran kecil kapital -->
                             <div class="small mt-1" style="color:#a3a3a3; font-size: 0.75rem;">GOL DICETAK</div>
+                        <!-- Penutup kotak bodi kartu statistik kedua -->
                         </div>
+                    <!-- Penutup kolom grid statistik kedua -->
                     </div>
                     
+                    <!-- == KOTAK STATISTIK 3: JUMLAH TOTAL TROFI == -->
+                    <!-- Kolom grid responsif penampung kotak statistik yang ketiga -->
                     <div class="col-6 col-md-3">
+                        <!-- Kotak kartu bodi statistik rata tengah berlatar abu-abu gelap -->
                         <div class="text-center p-4 rounded-3" style="background:#1a1a1a;">
+                            <!-- Menampilkan data 999+ trofi dengan format warna merah menyala menyala -->
                             <div class="font-heading fs-2 fw-bold" style="color:#c41e3a;">999+</div>
+                            <!-- Label penjelas jenis statistik trofi kejuaraan -->
                             <div class="small mt-1" style="color:#a3a3a3; font-size: 0.75rem;">TROFI</div>
+                        <!-- Penutup kotak bodi kartu statistik ketiga -->
                         </div>
+                    <!-- Penutup kolom grid statistik ketiga -->
                     </div>
                     
+                    <!-- == KOTAK STATISTIK 4: TAHUN SEJARAH BERDIRI == -->
+                    <!-- Kolom grid responsif penampung kotak statistik keempat sebagai penutup barisan data -->
                     <div class="col-6 col-md-3">
+                        <!-- Kotak kartu bodi statistik rata tengah berlatar abu-abu gelap -->
                         <div class="text-center p-4 rounded-3" style="background:#1a1a1a;">
+                            <!-- Menampilkan catatan data angka tahun berdiri klub yaitu 1878 ber-font tebal merah -->
                             <div class="font-heading fs-2 fw-bold" style="color:#c41e3a;">1878</div>
+                            <!-- Catatan label kecil penanda tahun pendirian resmi klub kebanggaan -->
                             <div class="small mt-1" style="color:#a3a3a3; font-size: 0.75rem;">BERDIRI</div>
+                        <!-- Penutup kotak bodi kartu statistik keempat -->
                         </div>
+                    <!-- Penutup kolom grid statistik keempat -->
                     </div>
                     
+                <!-- Penutup elemen baris data grid row statistik -->
                 </div>
+            <!-- Penutup total bagian section grid statistik beranda -->
             </section>
+        <!-- Penutup tag area isi konten utama bodi main -->
         </main>
 
+        <!-- === BAGIAN FOOTER / BAWAH WEBSITE === -->
+        <!-- Komponen penutup area bawah halaman yang otomatis dipaksa mengunci posisi di paling dasar berkat kelas mt-auto -->
         <footer class="container-fluid px-4 py-5 mt-auto text-center border-top" style="border-color:#222 !important;">
+            <!-- Nama pemegang hak cipta kepemilikan utama klub Manchester United ber-font heading putih kecil tebal -->
             <div class="font-heading fw-bold small" style="color:#ffffff;">MANCHESTER UNITED</div>
+            <!-- Teks pemberitahuan legalitas hak paten bertuliskan tahun rilis resmi 2026 ber-warna abu-abu tipis gelap -->
             <div class="mt-2" style="color:#555; font-size: 0.75rem;">© 2026 Manchester United Football Club. Semua hak dilindungi.</div>
             
+            <!-- Area susunan baris horizontal penampung tombol media sosial resmi aktif biar rata tengah -->
             <div class="d-flex justify-content-center gap-3 mt-3">
+                <!-- Tautan Medsos 1: Instagram (Membuka link tujuan resmi di tab browser baru lewat target="_blank") -->
                 <a href="https://www.instagram.com/manutd?igsh=YTk3YWY4Mndvb2F1" target="_blank" class="text-decoration-none">
+                    <!-- Pemanggilan berkas gambar lokal lambang logo Instagram transparan dari folder bernama foto -->
                     <img src="foto/ig.png" alt="Instagram Logo" style="width: 24px; height: 24px; object-fit: contain;">
+                <!-- Penutup jangkar link instagram -->
                 </a> 
               
+                <!-- Tautan Medsos 2: YouTube (Membuka link tujuan resmi di tab browser baru lewat target="_blank") -->
                 <a href="https://www.youtube.com/manutd" target="_blank" class="text-decoration-none">
+                    <!-- Pemanggilan berkas gambar lokal lambang logo YouTube merah transparan dari folder bernama foto -->
                     <img src="foto/yutub.png" alt="YouTube Logo" style="width: 26px; height: 26px; object-fit: contain;">
+                <!-- Penutup jangkar link youtube -->
                 </a>
+            <!-- Penutup area horizontal penampung tombol media sosial -->
             </div>
+        <!-- Penutup tag elemen footer bawah web -->
         </footer>
+    <!-- Penutup pembungkus utama aplikasi berekstensi id app -->
     </div>
     
+    <!-- Memanggil berkas online JavaScript Bootstrap 5 bundle untuk mengaktifkan seluruh komponen responsif klik (seperti offcanvas HP) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     
+    <!-- Perintah eksekusi inisialisasi skrip Lucide agar seluruh ikon berkode data-lucide bisa otomatis muncul sempurna -->
     <script>
         lucide.createIcons();
     </script>
 
+    <!-- Menghubungkan berkas logika skrip buatan sendiri bernama file script.js dari direktori lokal laptop Anda -->
     <script src="script.js"></script>
+<!-- Tag penutup bodi dokumen HTML -->
 </body>
+<!-- Tag penutup tanda akhir dari seluruh baris dokumen kode website -->
 </html>
