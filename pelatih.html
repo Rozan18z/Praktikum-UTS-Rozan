@@ -1,0 +1,154 @@
+<!-- Menandakan bahwa dokumen ini menggunakan standar HTML5 terbaru -->
+<!doctype html>
+<!-- Tag pembuka HTML dengan pengaturan bahasa Indonesia dan tinggi halaman penuh -->
+<html lang="id" class="h-100">
+<!-- Bagian head untuk memuat metadata, judul tab, serta tautan berkas CSS dan pustaka -->
+<head>
+    <!-- Menentukan encoding karakter UTF-8 agar seluruh simbol teks terbaca dengan benar oleh browser -->
+    <meta charset="UTF-8">
+    <!-- Mengatur viewport agar ukuran tampilan website otomatis pas dan responsive di layar HP maupun laptop -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Judul dari halaman web yang akan muncul pada bagian tab browser Anda -->
+    <title>Pelatih - Manchester United</title>
+    <!-- Memanggil library CSS Framework Bootstrap 5 via online CDN untuk tata letak halaman secara kilat -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Memanggil library berkas skrip Lucide Icons untuk kebutuhan memunculkan ikon di halaman web -->
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+    <!-- Mengambil kombinasi rumpun font Oswald dan Source Sans 3 langsung dari server Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Memanggil berkas eksternal stylesheet kustom buatan Anda sendiri bernama style.css -->
+    <link rel="stylesheet" href="style.css">
+<!-- Penutup tag head dokumen -->
+</head>
+<!-- Membuka tag body dengan warna background hitam pekat (#0f0f0f) dan mengaktifkan scrollbar vertikal otomatis -->
+<body class="h-100 font-body" style="background:#0f0f0f; overflow-y: auto;">
+    <!-- Pembungkus utama aplikasi dengan background hitam pekat, memenuhi tinggi layar minimal (min-vh-100) -->
+    <div id="app" class="w-100 min-vh-100 text-white d-flex flex-column" style="background:#0f0f0f;">
+        
+        <!-- ==== BAGIAN NAVIGASI / NAVBAR ATAS === -->
+        <!-- Garis navigasi atas menggunakan flexbox untuk memisahkan isi kiri dan kanan otomatis dengan batas border bawah -->
+        <nav class="w-100 d-flex align-items-center justify-content-between px-4 py-3 border-bottom" style="border-color: #1f2937 !important;">
+            <!-- Sisi Kiri: Wadah flexbox untuk mengatur jarak sela (gap-3) antara logo gambar dan teks nama klub -->
+            <div class="d-flex align-items-center gap-3">
+                <!-- Memanggil asset file gambar lambang logo Manchester United dari dalam folder foto lokal Anda -->
+                <img src="foto/emyu.png" alt="MU Logo" class="object-fit-contain" style="width: 40px; height: 40px;">
+                <!-- Teks nama klub utama berukuran sedang (fs-5), menggunakan font heading, tebal, dan berwarna putih -->
+                <span class="font-heading fs-5 fw-bold" style="color:#ffffff;">MANCHESTER UNITED</span>
+            <!-- Penutup wadah flexbox logo dan nama klub di sebelah kiri -->
+            </div>
+            <!-- Sisi Kanan: Barisan menu navigasi utama yang otomatis disembunyikan pada layar smartphone (d-none d-md-flex) -->
+            <div class="d-none d-md-flex gap-4 small fw-semibold" style="color:#a3a3a3; letter-spacing: 0.05em;">
+                <!-- Tautan link menu mengarah balik ke halaman utama / beranda (index.html) -->
+                <a href="index.html" class="text-decoration-none text-secondary text-white-hover transition">BERANDA</a> 
+                <!-- Tautan link menu mengarah ke halaman daftar skuad pemain (squad.html) -->
+                <a href="squad.html" class="text-decoration-none text-secondary text-white-hover transition">SKUAD</a> 
+                <!-- Tautan link menu aktif saat ini dengan teks berwarna putih terang benderang bertanda tanpa kelas tambahan -->
+                <a href="pelatih.html" class="text-decoration-none text-white transition">PELATIH</a> <!-- Aktif -->
+                <!-- Tautan link menu mengarah ke halaman jadwal pertandingan (jadwal.html) -->
+                <a href="jadwal.html" class="text-decoration-none text-secondary text-white-hover transition">JADWAL</a> 
+                <!-- Tautan link menu mengarah ke halaman daftar artikel ringkasan berita terbaru (berita.html) -->
+                <a href="berita.html" class="text-decoration-none text-secondary text-white-hover transition">BERITA</a>
+            <!-- Penutup wadah barisan tautan menu navigasi komputer -->
+            </div>
+            <!-- Tombol menu burger penanda navigasi mobile yang hanya muncul pada resolusi layar HP kecil saja -->
+            <button class="btn btn-link text-white d-md-none p-0"><i data-lucide="menu"></i></button>
+        <!-- Penutup tag elemen navigasi navbar atas -->
+        </nav>
+
+        <!-- === KONTEN PELATIH UTAMA === -->
+        <!-- Tag komponen main pembawa konten utama yang diatur fleksibel memenuhi halaman -->
+        <main class="flex-grow-1">
+            <!-- Section khusus konten pelatih dengan padding, animasi slide-up, dan jarak atas mt-4 -->
+            <section class="container-fluid px-4 py-5 slide-up mt-4">
+                <!-- Teks judul bagian pelatih utama berukuran kecil-menengah (fs-4) tebal berjarak huruf renggang -->
+                <h2 class="font-heading fs-4 fw-bold mb-4" style="color:#ffffff; letter-spacing: 0.05em;">PELATIH UTAMA</h2>
+                <!-- Card visual pembungkus profil pelatih dengan lebar maksimal 28rem, background gelap, dan border abu-abu -->
+                <div class="card bg-transparent mx-auto overflow-hidden rounded-4" style="max-width: 28rem; background:#1a1a1a !important; border:2px solid #333;">
+                    <!-- Area atas card berupa wadah gambar foto pelatih tinggi 192px dengan background gradasi merah jika gambar gagal muat -->
+                    <div class="d-flex align-items-center justify-content-center overflow-hidden" style="height: 192px; background: linear-gradient(135deg, #c41e3a, #7f1d1d);">
+                        <!-- Pemanggilan berkas gambar lokal foto pelatih dari folder foto dengan penyesuaian pangkas cover -->
+                        <img src="foto/pelatih.jpg" alt="Michael Carrick - Manager" class="w-100 h-100 object-fit-cover" loading="lazy">
+                    <!-- Penutup wadah gambar foto pelatih -->
+                    </div>
+                    <!-- Bagian badan card (card-body) berisi teks nama jabatan, deskripsi, dan statistik kecil pelatih -->
+                    <div class="card-body text-center p-4">
+                        <!-- Menampilkan teks nama pelatih menggunakan font heading berukuran besar fs-4 berwarna putih -->
+                        <div class="font-heading fw-bold fs-4" style="color:#ffffff;">Michael Carrick</div>
+                        <!-- Menampilkan label jabatan sebagai manajer kepala berwarna merah khas Manchester United -->
+                        <div class="small mt-1" style="color:#c41e3a;">Manajer Kepala</div>
+                        <!-- Teks paragraf penjelasan singkat deskripsi profil karier dan dedikasi pelatih kepala -->
+                        <p class="mt-3 mb-0 lh-lg" style="color:#a3a3a3; font-size: 0.75rem;">Legenda Manchester United yang telah memimpin klub dengan pengalaman puluhan tahun dan dedikasi luar biasa untuk kesuksesan tim.</p>
+                        <!-- Grid internal Bootstrap row dengan sela g-3 untuk membungkus dua kolom statistik di bawah deskripsi -->
+                        <div class="row g-3 mt-3">
+                            <!-- Kolom kiri untuk statistik jumlah musim -->
+                            <div class="col-6">
+                                <!-- Wadah kotak statistik dengan sudut melengkung rounded-3 dan background hitam pekat -->
+                                <div class="rounded-3 p-3" style="background:#0f0f0f;">
+                                    <!-- Angka jumlah musim berfont heading tebal berwarna merah -->
+                                    <div class="font-heading fw-bold" style="color:#c41e3a;">30</div>
+                                    <!-- Label keterangan bertuliskan MUSIM dengan teks kecil abu-abu -->
+                                    <div style="color:#a3a3a3; font-size: 0.75rem;">MUSIM</div>
+                                <!-- Penutup wadah kotak statistik kiri -->
+                                </div>
+                            <!-- Penutup kolom statistik kiri -->
+                            </div>
+                            <!-- Kolom kanan untuk statistik jumlah penghargaan -->
+                            <div class="col-6">
+                                <!-- Wadah kotak statistik dengan sudut melengkung rounded-3 dan background hitam pekat -->
+                                <div class="rounded-3 p-3" style="background:#0f0f0f;">
+                                    <!-- Angka jumlah total penghargaan pelatih berfont heading tebal berwarna merah -->
+                                    <div class="font-heading fw-bold" style="color:#c41e3a;">100</div>
+                                    <!-- Label keterangan bertuliskan PENGHARGAAN dengan teks kecil abu-abu -->
+                                    <div style="color:#a3a3a3; font-size: 0.75rem;">PENGHARGAAN</div>
+                                <!-- Penutup wadah kotak statistik kanan -->
+                                </div>
+                            <!-- Penutup kolom statistik kanan -->
+                            </div>
+                        <!-- Penutup grid internal row statistik -->
+                        </div>
+                    <!-- Penutup elemen badan card pelatih -->
+                    </div>
+                <!-- Penutup elemen card profil pelatih utama -->
+                </div>
+            <!-- Penutup komponen section pelatih utama -->
+            </section>
+        <!-- Penutup tag area utama konten main -->
+        </main>
+<!-- Komponen penutup bagian bawah halaman yang dipaksa mengunci posisi di dasar monitor berkat kelas utilitas mt-auto -->
+<footer class="container-fluid px-4 py-5 mt-auto text-center border-top" style="border-color:#222 !important;">
+            <!-- Nama pemegang hak merek dagang dan kepemilikan utama klub Manchester United berukuran kecil tebal -->
+            <div class="font-heading fw-bold small" style="color:#ffffff;">MANCHESTER UNITED</div>
+            <!-- Informasi catatan kecil pemberitahuan rilis legalitas hak cipta buatan bertuliskan tahun 2026 ber-warna redup gelap -->
+            <div class="mt-2" style="color:#555; font-size: 0.75rem;">© 2026 Manchester United Football Club. Semua hak dilindungi.</div>
+            
+            <!-- Area susunan baris horizontal penampung tombol media sosial resmi biar rata tengah -->
+            <div class="d-flex justify-content-center gap-3 mt-3">
+                
+                <!-- Tautan Medsos 1: Instagram (Membuka link tujuan resmi di tab browser baru lewat target="_blank") -->
+                <a href="https://www.instagram.com/manutd?igsh=YTk3YWY4Mndvb2F1" target="_blank" class="text-decoration-none">
+                    <!-- Pemanggilan asset file gambar lambang logo Instagram transparan lokal dari dalam folder bernama foto -->
+                    <img src="foto/ig.png" alt="Instagram Logo" style="width: 24px; height: 24px; object-fit: contain;">
+                <!-- Tag penutup link jangkar tautan instagram resmi -->
+                </a> 
+              
+                <!-- Tautan Medsos 2: YouTube (Membuka link tujuan resmi di tab browser baru lewat target="_blank") -->
+                <a href="https://www.youtube.com/manutd" target="_blank" class="text-decoration-none">
+                    <!-- Pemanggilan asset file gambar lambang logo YouTube merah transparan lokal dari dalam folder bernama foto -->
+                    <img src="foto/yutub.png" alt="YouTube Logo" style="width: 26px; height: 26px; object-fit: contain;">
+                <!-- Tag penutup link jangkar tautan youtube resmi -->
+                </a>
+
+            <!-- Penutup area susunan tombol baris media sosial -->
+            </div>
+        <!-- Tag penutup elemen footer bawah halaman -->
+        </footer>
+    <!-- Tag penutup dari pembungkus utama aplikasi ber-id app -->
+    </div>
+    <!-- Memanggil berkas naskah JavaScript Bootstrap 5 bundle via online CDN untuk mengaktifkan fungsi responsif komponen -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Menghubungkan berkas logika eksternal JavaScript buatan sendiri dari file script.js lokal -->
+    <script src="script.js"></script>
+<!-- Tag penutup body halaman web -->
+</body>
+<!-- Tag penutup penanda akhir dari seluruh baris dokumen HTML -->
+</html>

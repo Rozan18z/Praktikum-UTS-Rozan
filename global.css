@@ -1,0 +1,61 @@
+/* Mengatur elemen dasar HTML dan BODY agar tingginya penuh 100% mengikuti layar */
+html, body { 
+    height: 100%; 
+    /* Menghilangkan jarak space bawaan di pinggiran halaman web */
+    margin: 0; 
+}
+
+/* Mengatur setelan khusus untuk elemen body utama website */
+body { 
+    /* Mengunci ukuran elemen agar padding dan border tidak merusak lebar/tinggi kotak layout */
+    box-sizing: border-box; 
+}
+
+/* Membuat class font-heading untuk tulisan judul atau teks besar */
+.font-heading { 
+    /* Memakai jenis font Oswald dari Google Fonts, kalau gagal pakai font standar sans-serif */
+    font-family: 'Oswald', sans-serif; 
+}
+
+/* Membuat class font-body untuk tulisan teks paragraf atau artikel biasa */
+.font-body { 
+    /* Memakai jenis font Source Sans 3, kalau gagal pakai font standar sans-serif */
+    font-family: 'Source Sans 3', sans-serif; 
+}
+
+/* Membuat cetak biru (blueprint) animasi bernama pulse-glow untuk efek bayangan lampu neon berkedip */
+@keyframes pulse-glow { 
+    /* Kondisi awal (0%) dan akhir (100%) animasi: efek bayangan merah agak tipis/samar */
+    0%, 100% { box-shadow: 0 0 20px rgba(220, 38, 38, 0.3); } 
+    /* Kondisi tengah (50%) animasi: efek bayangan merah melebar tebal (efek menyala) */
+    50% { box-shadow: 0 0 40px rgba(220, 38, 38, 0.6); } 
+}
+
+/* Membuat class glow-pulse agar elemen bisa dipasangi animasi lampu neon */
+.glow-pulse { 
+    /* Memakai animasi pulse-glow selama 2 detik dan diulang terus-menerus tanpa setop (infinite) */
+    animation: pulse-glow 2s infinite; 
+}
+
+/* Membuat cetak biru animasi bernama slide-up untuk efek memunculkan elemen dari bawah ke atas */
+@keyframes slide-up { 
+    /* Kondisi awal: elemen masih gaib/transparan (opacity 0) dan posisinya turun ke bawah 30px */
+    from { opacity: 0; transform: translateY(30px); } 
+    /* Kondisi akhir: elemen muncul jelas (opacity 1) dan balik ke posisi asli semula */
+    to { opacity: 1; transform: translateY(0); } 
+}
+
+/* Membuat class slide-up agar elemen bisa dipasangi gerakan muncul dari bawah */
+.slide-up { 
+    /* Memakai animasi slide-up selama 0.6 detik, gerakannya halus (ease), dan menetap di posisi akhir (forwards) */
+    animation: slide-up 0.6s ease forwards; 
+}
+
+/* Membuat efek jeda waktu muncul (delay) selama 0.1 detik untuk elemen gelombang pertama */
+.slide-up-d1 { animation-delay: 0.1s; opacity: 0; }
+/* Membuat efek jeda waktu muncul (delay) selama 0.2 detik untuk elemen gelombang kedua */
+.slide-up-d2 { animation-delay: 0.2s; opacity: 0; }
+/* Membuat efek jeda waktu muncul (delay) selama 0.3 detik untuk elemen gelombang ketiga */
+.slide-up-d3 { animation-delay: 0.3s; opacity: 0; }
+/* Membuat efek jeda waktu muncul (delay) selama 0.4 detik untuk elemen gelombang keempat */
+.slide-up-d4 { animation-delay: 0.4s; opacity: 0; }
