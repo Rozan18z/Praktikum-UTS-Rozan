@@ -1,127 +1,98 @@
-<!-- Dokumen HTML5 standar -->
 <!doctype html>
 <html lang="id" class="h-100">
 <head>
-    <!-- Pengaturan karakter encoding agar mendukung semua jenis simbol teks -->
     <meta charset="UTF-8">
-    <!-- Pengaturan responsive agar tampilan website otomatis pas di layar HP maupun laptop -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Judul halaman yang muncul pada tab browser Anda -->
     <title>Beranda - Manchester United</title>
     
-    <!-- Memanggil Framework Bootstrap 5 CSS via CDN untuk menyusun layout secara instant -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     
-    <!-- Memanggil pustaka Lucide Icons untuk kebutuhan penggunaan ikon di halaman web -->
     <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
-    <!-- Mengambil font khusus (Oswald untuk heading, Source Sans 3 untuk teks body) dari Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
     
-    <!-- Memanggil file CSS eksternal (style.css) untuk kustomisasi desain tambahan -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="h-100 font-body" style="background:#0f0f0f; overflow-y: auto;">
-    <!-- Pembungkus utama aplikasi dengan background hitam pekat, memenuhi tinggi layar minimal (min-vh-100) -->
     <div id="app" class="w-100 min-vh-100 text-white d-flex flex-column" style="background:#0f0f0f;">
         
-        <!-- === BAGIAN NAVIGASI / NAVBAR === -->
-        <!-- Batas navigasi atas dengan flexbox agar logo kiri dan menu kanan terpisah otomatis -->
-        <nav class="w-100 d-flex align-items-center justify-content-between px-4 py-3 border-bottom" style="border-color: #1f2937 !important;">
-            <!-- Sisi Kiri: Logo dan Nama Klub -->
+        <nav class="navbar navbar-dark w-100 d-flex align-items-center justify-content-between px-4 py-3 border-bottom" style="border-color: #1f2937 !important; background: #0f0f0f;">
             <div class="d-flex align-items-center gap-3">
-                <!-- Memanggil file logo MU transparan lokal dari dalam folder foto -->
                 <img src="foto/emyu.png" alt="MU Logo" class="object-fit-contain" style="width: 40px; height: 40px;">
-                <!-- Teks nama klub utama berukuran besar (fs-5) dan tebal -->
                 <span id="nav-club-name" class="font-heading fs-5 fw-bold" style="color:#ffffff;">MANCHESTER UNITED</span>
             </div>
-            <!-- Sisi Kanan: Tautan Menu (Hanya muncul di layar komputer/tablet karena class d-none d-md-flex) -->
+            
             <div class="d-none d-md-flex gap-4 small fw-semibold" style="color:#a3a3a3; letter-spacing: 0.05em;">
-                <!-- Link aktif Beranda saat ini menuju index.html -->
                 <a href="index.html" class="text-decoration-none text-white transition">BERANDA</a> 
-                <!-- Link menuju halaman Skuad / Pemain -->
                 <a href="squad.html" class="text-decoration-none text-secondary text-white-hover transition">SKUAD</a> 
-                <!-- Link menuju halaman info Pelatih -->
                 <a href="pelatih.html" class="text-decoration-none text-secondary text-white-hover transition">PELATIH</a> 
-                <!-- Link menuju halaman Jadwal Pertandingan -->
                 <a href="jadwal.html" class="text-decoration-none text-secondary text-white-hover transition">JADWAL</a> 
-                <!-- Link menuju halaman Berita -->
                 <a href="berita.html" class="text-decoration-none text-secondary text-white-hover transition">BERITA</a>
             </div>
-            <!-- Tombol burger menu ikon Lucide yang hanya tampil di layar HP (d-md-none) -->
-            <button class="btn btn-link text-white d-md-none p-0"><i data-lucide="menu"></i></button>
+            
+            <button class="d-md-none border-0 p-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-label="Toggle navigation" style="background: transparent;">
+                <div style="width: 24px; height: 18px; display: flex; flex-direction: column; justify-content: space-between;">
+                    <span style="display: block; width: 100%; height: 2px; background-color: #ffffff;"></span>
+                    <span style="display: block; width: 100%; height: 2px; background-color: #ffffff;"></span>
+                    <span style="display: block; width: 100%; height: 2px; background-color: #ffffff;"></span>
+                </div>
+            </button>
         </nav>
 
-        <!-- === KONTEN BERANDA UTAMA === -->
+        <div class="offcanvas offcanvas-end text-bg-dark d-md-none" tabindex="-1" id="mobileMenu" style="background-color: #0f0f0f !important;">
+            <div class="offcanvas-header border-bottom" style="border-color: #1f2937 !important;">
+                <h5 class="offcanvas-title font-heading fw-bold">MENU NAVIGASI</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div class="d-flex flex-column gap-4 fw-semibold fs-5 mt-3">
+                    <a href="index.html" class="text-decoration-none text-white">BERANDA</a>
+                    <a href="squad.html" class="text-decoration-none text-secondary">SKUAD</a>
+                    <a href="pelatih.html" class="text-decoration-none text-secondary">PELATIH</a>
+                    <a href="jadwal.html" class="text-decoration-none text-secondary">JADWAL</a>
+                    <a href="berita.html" class="text-decoration-none text-secondary">BERITA</a>
+                </div>
+            </div>
+        </div>
+
         <main class="flex-grow-1">
             
-            <!-- 1. Hero Section (Bagian Penyambutan Utama di Tengah) -->
-            <!-- Menggunakan class slide-up untuk animasi muncul halus dari bawah -->
             <section id="home" class="w-100 px-4 py-5 py-md-5 d-flex flex-column align-items-center text-center slide-up mt-5">
-                <!-- Logo MU berukuran besar di bagian tengah layar -->
                 <img src="foto/emyu.png" alt="MU Crest" class="object-fit-contain mb-4" style="width: 96px; height: 96px;">
-                <!-- Judul Utama Halaman menggunakan font tebal berukuran besar yaitu 3.5rem -->
                 <h1 id="hero-club-name" class="font-heading fw-bold" style="color:#ffffff; letter-spacing: -0.02em; font-size: 3.5rem;">MANCHESTER UNITED</h1>
-                <!-- Slogan klub "Glory Glory Man United" dengan warna abu-abu tipis -->
                 <p id="hero-slogan" class="mt-3 fs-5 fw-light" style="color:#a3a3a3; letter-spacing: 0.05em;">GLORY GLORY MAN UNITED</p>
-                <!-- Area Dua Tombol Navigasi Cepat di tengah hero -->
                 <div class="mt-5 d-flex gap-3">
-                    <!-- Tombol outline putih mengarah ke halaman jadwal.html -->
                     <a href="jadwal.html" class="btn btn-outline-light font-heading fw-semibold rounded-1 px-4 py-2" style="border-color:#555; font-size: 0.875rem;">LIHAT JADWAL</a> 
-                    <!-- Tombol outline putih mengarah ke halaman squad.html -->
                     <a href="squad.html" class="btn btn-outline-light font-heading fw-semibold rounded-1 px-4 py-2" style="border-color:#555; font-size: 0.875rem;">SKUAD KAMI</a>
                 </div>
             </section>
 
-            <!-- 2. Stats Section (Bagian Grid Statistik Pencapaian Klub) -->
-            <!-- Membuka komponen section statistik dengan padding vertikal py-5 dan efek animasi slide-up -->
             <section class="container-fluid px-4 py-5 slide-up slide-up-d1 mt-4">
-                <!-- Membuat baris pembungkus (Row) dengan jarak sela antar kotak sebesar g-3 -->
                 <div class="row g-3">
                     
-                    <!-- ========== KOTAK STATISTIK 1: KEMENANGAN ========== -->
-                    <!-- Menentukan ukuran kolom: lebar 2 kotak di HP (col-6) dan 4 kotak sejajar di laptop (col-md-3) -->
                     <div class="col-6 col-md-3">
-                        <!-- Kotak visual dengan text rata tengah, padding p-4, dan sudut melengkung rounded-3 -->
                         <div class="text-center p-4 rounded-3" style="background:#1a1a1a;">
-                            <!-- Menampilkan angka 50 berukuran besar (fs-2), tebal (fw-bold), warna merah khas MU -->
                             <div class="font-heading fs-2 fw-bold" style="color:#c41e3a;">50,000</div>
-                            <!-- Teks label kecil "KEMENANGAN" di bawah angka dengan warna abu-abu redup -->
                             <div class="small mt-1" style="color:#a3a3a3; font-size: 0.75rem;">KEMENANGAN</div>
                         </div>
                     </div>
                     
-                    <!-- === KOTAK STATISTIK 2: GOL DICETAK === -->
-                    <!-- Mengatur grid kolom kedua agar responsive mengikuti resolusi layar device -->
                     <div class="col-6 col-md-3">
-                        <!-- Wadah kotak pelapis angka statistik kedua dengan latar belakang gelap (#1a1a1a) -->
                         <div class="text-center p-4 rounded-3" style="background:#1a1a1a;">
-                            <!-- Menampilkan angka 1000 gol menggunakan font khusus tajam (font-heading) -->
                             <div class="font-heading fs-2 fw-bold" style="color:#c41e3a;">10,000</div>
-                            <!-- Sub-teks penjelas berukuran kecil 0.75rem agar susunan layout seimbang -->
                             <div class="small mt-1" style="color:#a3a3a3; font-size: 0.75rem;">GOL DICETAK</div>
                         </div>
                     </div>
                     
-                    <!-- == KOTAK STATISTIK 3: JUMLAH TROFI == -->
-                    <!-- Membagi grid untuk wadah penampung kotak pencapaian ketiga klub -->
                     <div class="col-6 col-md-3">
-                        <!-- Membuka lapisan kotak background card ketiga sewarna dengan kotak lainnya -->
                         <div class="text-center p-4 rounded-3" style="background:#1a1a1a;">
-                            <!-- Menampilkan angka total 66 trofi dengan format tulisan tebal menyala -->
                             <div class="font-heading fs-2 fw-bold" style="color:#c41e3a;">999+</div>
-                            <!-- Label teks keterangan penanda trofi menggunakan format huruf kapital -->
                             <div class="small mt-1" style="color:#a3a3a3; font-size: 0.75rem;">TROFI</div>
                         </div>
                     </div>
                     
-                    <!-- ==KOTAK STATISTIK 4: TAHUN BERDIRI== -->
-                    <!-- Kolom keempat sebagai penutup baris barisan data statistik sejarah klub -->
                     <div class="col-6 col-md-3">
-                        <!-- Membuka komponen card pelindung visual data tahun sejarah terakhir -->
                         <div class="text-center p-4 rounded-3" style="background:#1a1a1a;">
-                            <!-- Menampilkan angka tahun 1878 dengan pewarnaan kode merah tua (#c41e3a) -->
                             <div class="font-heading fs-2 fw-bold" style="color:#c41e3a;">1878</div>
-                            <!-- Teks kecil paling bawah sebagai penanda keterangan tahun berdirinya klub -->
                             <div class="small mt-1" style="color:#a3a3a3; font-size: 0.75rem;">BERDIRI</div>
                         </div>
                     </div>
@@ -130,37 +101,28 @@
             </section>
         </main>
 
-        <!-- ==== BAGIAN FOOTER / BAWAH WEBSITTE ==== -->
-        <!-- Footer diletakkan di paling bawah secara otomatis karena class mt-auto -->
         <footer class="container-fluid px-4 py-5 mt-auto text-center border-top" style="border-color:#222 !important;">
-            <!-- Nama Hak Cipta Utama Manchester United -->
             <div class="font-heading fw-bold small" style="color:#ffffff;">MANCHESTER UNITED</div>
-            <!-- Teks kecil tahun rilis hak cipta website dengan warna redup -->
             <div class="mt-2" style="color:#555; font-size: 0.75rem;">© 2026 Manchester United Football Club. Semua hak dilindungi.</div>
             
-            <!-- Area Ikon Gambar Sosial Media Resmi Aktif -->
             <div class="d-flex justify-content-center gap-3 mt-3">
-                
-                <!-- Tautan 1: Instagram (Terbuka di tab baru berkat target="_blank") -->
                 <a href="https://www.instagram.com/manutd?igsh=YTk3YWY4Mndvb2F1" target="_blank" class="text-decoration-none">
-                    <!-- Menampilkan file gambar lokal ig.png transparan di folder foto -->
                     <img src="foto/ig.png" alt="Instagram Logo" style="width: 24px; height: 24px; object-fit: contain;">
                 </a> 
               
-                <!-- Tautan 2: YouTube (Terbuka di tab baru berkat target="_blank") -->
                 <a href="https://www.youtube.com/manutd" target="_blank" class="text-decoration-none">
-                    <!-- Menampilkan file gambar lokal yutub.png transparan di folder foto -->
                     <img src="foto/yutub.png" alt="YouTube Logo" style="width: 26px; height: 26px; object-fit: contain;">
                 </a>
-
             </div>
         </footer>
     </div>
     
-    <!-- Memanggil file JavaScript Bootstrap 5 bundle untuk fungsi komponen interaktif -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     
-    <!-- Memanggil logika skrip kustom buatan sendiri dari file script.js -->
+    <script>
+        lucide.createIcons();
+    </script>
+
     <script src="script.js"></script>
 </body>
 </html>

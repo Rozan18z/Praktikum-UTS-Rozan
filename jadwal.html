@@ -26,237 +26,161 @@
     <div id="app" class="w-100 min-vh-100 text-white d-flex flex-column" style="background:#0f0f0f;">
         
         <!-- ==================== BAGIAN NAVIGASI / NAVBAR ATAS ==================== -->
-        <!-- Garis navigasi atas menggunakan flexbox untuk memisahkan isi kiri dan kanan otomatis dengan batas border bawah -->
-        <nav class="w-100 d-flex align-items-center justify-content-between px-4 py-3 border-bottom" style="border-color: #1f2937 !important;">
-            <!-- Sisi Kiri: Wadah flexbox untuk mengatur jarak sela (gap-3) antara logo gambar dan teks nama klub -->
+        <nav class="navbar navbar-dark w-100 d-flex align-items-center justify-content-between px-4 py-3 border-bottom" style="border-color: #1f2937 !important; background: #0f0f0f;">
+            <!-- Sisi Kiri: Logo dan Nama Klub -->
             <div class="d-flex align-items-center gap-3">
-                <!-- Memanggil asset file gambar lambang logo Manchester United dari dalam folder foto lokal Anda -->
                 <img src="foto/emyu.png" alt="MU Logo" class="object-fit-contain" style="width: 40px; height: 40px;">
-                <!-- Teks nama klub utama berukuran sedang (fs-5), menggunakan font heading, tebal, dan berwarna putih -->
                 <span class="font-heading fs-5 fw-bold" style="color:#ffffff;">MANCHESTER UNITED</span>
-            <!-- Penutup wadah flexbox logo dan nama klub di sebelah kiri -->
             </div>
-            <!-- Sisi Kanan: Barisan menu navigasi utama yang otomatis disembunyikan pada layar smartphone (d-none d-md-flex) -->
-            <div class="d-none d-md-flex gap-4 small fw-semibold nav-links" style="color:#a3a3a3; letter-spacing: 0.05em;">
-                <!-- Tautan link menu mengarah balik ke halaman utama / beranda (index.html) -->
+            
+            <!-- Sisi Kanan: Tautan Menu Utama (Layar Laptop/Tablet) -->
+            <div class="d-none d-md-flex gap-4 small fw-semibold" style="color:#a3a3a3; letter-spacing: 0.05em;">
                 <a href="index.html" class="text-decoration-none text-secondary text-white-hover transition">BERANDA</a> 
-                <!-- Tautan link menu mengarah ke halaman daftar skuad pemain (pemain.html) -->
                 <a href="pemain.html" class="text-decoration-none text-secondary text-white-hover transition">SKUAD</a> 
-                <!-- Tautan link menu mengarah ke halaman profil data tim pelatih (pelatih.html) -->
                 <a href="pelatih.html" class="text-decoration-none text-secondary text-white-hover transition">PELATIH</a> 
-                <!-- Tautan link menu aktif saat ini dengan teks berwarna putih terang benderang bertanda kelas active -->
-                <a href="jadwal.html" class="text-decoration-none text-white transition active">JADWAL</a>
-                <!-- Tautan link menu mengarah ke halaman daftar artikel ringkasan berita terbaru (berita.html) -->
+                <a href="jadwal.html" class="text-decoration-none text-white transition active">JADWAL</a> <!-- Aktif -->
                 <a href="berita.html" class="text-decoration-none text-secondary text-white-hover transition">BERITA</a>
-            <!-- Penutup wadah barisan tautan menu navigasi komputer -->
             </div>
-            <!-- Tombol menu burger penanda navigasi mobile yang hanya muncul pada resolusi layar HP kecil saja -->
-            <button class="btn btn-link text-white d-md-none p-0"><i data-lucide="menu"></i></button>
-        <!-- Penutup tag elemen navigasi navbar atas -->
+            
+            <!-- Tombol burger menu kustom (Menggunakan CSS murni agar garis tiga putih selalu muncul di HP) -->
+            <button class="d-md-none border-0 p-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-label="Toggle navigation" style="background: transparent;">
+                <div style="width: 24px; height: 18px; display: flex; flex-direction: column; justify-content: space-between;">
+                    <span style="display: block; width: 100%; height: 2px; background-color: #ffffff;"></span>
+                    <span style="display: block; width: 100%; height: 2px; background-color: #ffffff;"></span>
+                    <span style="display: block; width: 100%; height: 2px; background-color: #ffffff;"></span>
+                </div>
+            </button>
         </nav>
 
+        <!-- === MENU RESPONSIF LAYAR HP (OFFCANVAS) === -->
+        <div class="offcanvas offcanvas-end text-bg-dark d-md-none" tabindex="-1" id="mobileMenu" style="background-color: #0f0f0f !important;">
+            <div class="offcanvas-header border-bottom" style="border-color: #1f2937 !important;">
+                <h5 class="offcanvas-title font-heading fw-bold">MENU NAVIGASI</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <!-- Tautan Menu HP: JADWAL diberi class text-white (aktif), sisanya text-secondary -->
+                <div class="d-flex flex-column gap-4 fw-semibold fs-5 mt-3">
+                    <a href="index.html" class="text-decoration-none text-secondary">BERANDA</a>
+                    <a href="pemain.html" class="text-decoration-none text-secondary">SKUAD</a>
+                    <a href="pelatih.html" class="text-decoration-none text-secondary">PELATIH</a>
+                    <a href="jadwal.html" class="text-decoration-none text-white">JADWAL</a>
+                    <a href="berita.html" class="text-decoration-none text-secondary">BERITA</a>
+                </div>
+            </div>
+        </div>
+
         <!-- ==================== AREA UTAMA: KONTEN JADWAL TANDING ==================== -->
-        <!-- Tag komponen main pembawa konten utama yang melebar penuh (w-100) dan tumbuh fleksibel mengikuti tinggi layar -->
         <main class="flex-grow-1 w-100">
             
-            <!-- Pembungkus elemen teks judul halaman dengan padding kiri-kanan px-4, jarak atas pt-5 dan mt-4 -->
             <div class="px-4 pt-5 mt-4">
-                <!-- Judul bagian utama teks kapital tebal berukuran fs-4 dengan pengaturan jarak renggang sela huruf -->
                 <h2 class="font-heading fs-4 fw-bold mb-4" style="color:#ffffff; letter-spacing: 0.05em;">PERTANDINGAN BERIKUTNYA</h2>
-            <!-- Penutup wadah elemen judul halaman -->
             </div>
 
             <!-- ========== KOTAK JADWAL BARIS 1: MANCHESTER UNITED VS LIVERPOOL FC ========== -->
-            <!-- Kotak pembungkus jadwal 1 bermargin bawah mb-4, ber-border atas-bawah, dengan warna gradasi merah tua ke abu-abu gelap -->
             <div class="p-4 p-md-5 d-flex flex-column flex-md-row align-items-center justify-content-between gap-4 border-bottom border-top mb-4" style="background: linear-gradient(135deg, #1a1a1a 0%, #2a1010 100%); border-color: #333 !important;">
-                <!-- Blok Tim Kiri: Menampung logo dan nama tim tuan rumah (Manchester United) sejajar horizontal rata kiri -->
                 <div class="d-flex align-items-center gap-3 w-100 w-md-auto justify-content-start">
-                    <!-- Bingkai lingkaran hitam (background #000) berukuran 56px dengan pembatas overflow terpotong rapi -->
                     <div class="rounded-circle d-flex align-items-center justify-content-center overflow-hidden" style="background:#000000; width: 56px; height: 56px;">
-                        <!-- Pemanggilan asset berkas gambar logo emyu dari folder foto lokal laptop Anda -->
                         <img src="foto/emyu.png" alt="Manchester United Crest" class="object-fit-contain" style="width: 48px; height: 48px;" loading="lazy">
-                    <!-- Penutup bingkai lingkaran hitam logo Manchester United -->
                     </div>
-                    <!-- Wadah susunan teks informasi identitas klub tim kiri -->
                     <div>
-                        <!-- Menampilkan tulisan teks nama klub Manchester United menggunakan font khusus heading putih tebal -->
                         <div class="font-heading fw-bold fs-5" style="color:#ffffff;">MANCHESTER UNITED</div>
-                        <!-- Keterangan label kecil penjelas status laga sebagai tim tuan rumah di stadion sendiri -->
                         <div style="color:#a3a3a3; font-size: 0.75rem;">Kandang</div>
-                    <!-- Penutup wadah susunan teks info klub kiri -->
                     </div>
-                <!-- Penutup blok tim kiri (Manchester United) -->
                 </div>
-                <!-- Blok Tengah: Menampilkan simbol pertarungan VS beserta catatan informasi tanggal kickoff pertandingan -->
                 <div class="text-center my-3 my-md-0">
-                    <!-- Teks kapital VS berukuran besar fs-3, tebal, dan diwarnai merah menyala khas identitas klub -->
                     <div class="font-heading fs-3 fw-bold" style="color:#c41e3a;">VS</div>
-                    <!-- Teks kecil ber-ID match-date untuk menampilkan hari, tanggal, bulan, serta jam kickoff siaran langsung pertandingan -->
                     <div id="match-date" class="mt-1" style="color:#a3a3a3; font-size: 0.75rem;">Minggu, 2 Mei • 21:00 WIB</div>
-                <!-- Penutup blok teks tengah (VS) -->
                 </div>
-                <!-- Blok Tim Kanan: Menampung logo dan nama tim penantang tamu (Liverpool FC) sejajar horizontal rata kanan -->
                 <div class="d-flex align-items-center gap-3 w-100 w-md-auto justify-content-end">
-                    <!-- Wadah susunan teks informasi identitas klub tim kanan dengan pengaturan tulisan rata kanan (text-end) -->
                     <div class="text-end">
-                        <!-- Menampilkan teks nama klub rival Liverpool FC dengan format huruf kapital putih tebal fs-5 -->
                         <div id="opponent-name" class="font-heading fw-bold fs-5" style="color:#ffffff;">LIVERPOOL FC</div>
-                        <!-- Keterangan label kecil penjelas status laga sebagai tim tamu yang melawat ke luar stadion -->
                         <div style="color:#a3a3a3; font-size: 0.75rem;">Tandang</div>
-                    <!-- Penutup wadah teks informasi tim kanan -->
                     </div>
-                    <!-- Bingkai lingkaran hitam berukuran 64px sebagai wadah penempatan gambar logo lambang klub rival -->
                     <div class="rounded-circle d-flex align-items-center justify-content-center overflow-hidden" style="background:#000000; width: 64px; height: 64px;">
-                        <!-- Pemanggilan asset berkas gambar logo liverpool dari folder foto lokal laptop Anda dengan padding sela p-1 -->
                         <img src="foto/liverpool.jpg" alt="Liverpool FC Logo" class="object-fit-contain p-1 w-100 h-100" loading="lazy">
-                    <!-- Penutup bingkai lingkaran hitam logo tim lawan kanan -->
                     </div>
-                <!-- Penutup blok tim kanan (Liverpool FC) -->
                 </div>
-            <!-- Penutup total satu baris Kotak Jadwal 1 -->
             </div>
 
             <!-- ========== KOTAK JADWAL BARIS 2: MANCHESTER UNITED VS CHELSEA FC ========== -->
-            <!-- Kotak pembungkus jadwal 2 bermargin bawah mb-4, ber-border atas-bawah, dengan warna gradasi merah tua ke abu-abu gelap -->
             <div class="p-4 p-md-5 d-flex flex-column flex-md-row align-items-center justify-content-between gap-4 border-bottom border-top mb-4" style="background: linear-gradient(135deg, #1a1a1a 0%, #2a1010 100%); border-color: #333 !important;">
-                <!-- Blok Tim Kiri: Menampung logo dan nama tim tuan rumah (Manchester United) sejajar horizontal rata kiri -->
                 <div class="d-flex align-items-center gap-3 w-100 w-md-auto justify-content-start">
-                    <!-- Bingkai lingkaran hitam berukuran 56px sebagai wadah penempatan gambar lambang logo klub Manchester United -->
                     <div class="rounded-circle d-flex align-items-center justify-content-center overflow-hidden" style="background:#000000; width: 56px; height: 56px;">
-                        <!-- Pemanggilan asset berkas gambar logo emyu dari folder foto lokal laptop Anda -->
                         <img src="foto/emyu.png" alt="Manchester United Crest" class="object-fit-contain" style="width: 48px; height: 48px;" loading="lazy">
-                    <!-- Penutup bingkai lingkaran hitam logo Manchester United -->
                     </div>
-                    <!-- Wadah susunan teks informasi identitas klub tim kiri -->
                     <div>
-                        <!-- Menampilkan tulisan teks nama klub Manchester United menggunakan font khusus heading putih tebal -->
                         <div class="font-heading fw-bold fs-5" style="color:#ffffff;">MANCHESTER UNITED</div>
-                        <!-- Keterangan label kecil penjelas status laga sebagai tim tuan rumah di stadion sendiri -->
                         <div style="color:#a3a3a3; font-size: 0.75rem;">Kandang</div>
-                    <!-- Penutup wadah susunan teks info klub kiri -->
                     </div>
-                <!-- Penutup blok tim kiri (Manchester United) -->
                 </div>
-                <!-- Blok Tengah: Menampilkan simbol pertarungan VS beserta catatan informasi tanggal kickoff pertandingan -->
                 <div class="text-center my-3 my-md-0">
-                    <!-- Teks kapital VS berukuran besar fs-3, tebal, dan diwarnai merah menyala khas identitas klub -->
                     <div class="font-heading fs-3 fw-bold" style="color:#c41e3a;">VS</div>
-                    <!-- Teks kecil untuk menampilkan hari, tanggal, bulan, serta jam kickoff siaran langsung pertandingan kedua -->
                     <div class="mt-1" style="color:#a3a3a3; font-size: 0.75rem;">Selasa, 10 Mei • 22:00 WIB</div>
-                <!-- Penutup blok teks tengah (VS) -->
                 </div>
-                <!-- Blok Tim Kanan: Menampung logo dan nama tim penantang tamu (Chelsea FC) sejajar horizontal rata kanan -->
                 <div class="d-flex align-items-center gap-3 w-100 w-md-auto justify-content-end">
-                    <!-- Wadah susunan teks informasi identitas klub tim kanan dengan pengaturan tulisan rata kanan (text-end) -->
                     <div class="text-end">
-                        <!-- Menampilkan teks nama klub rival Chelsea FC dengan format huruf kapital putih tebal fs-5 -->
                         <div class="font-heading fw-bold fs-5" style="color:#ffffff;">CHELSEA FC</div>
-                        <!-- Keterangan label kecil penjelas status laga sebagai tim tamu yang melawat ke luar stadion -->
                         <div style="color:#a3a3a3; font-size: 0.75rem;">Tandang</div>
-                    <!-- Penutup wadah teks informasi tim kanan -->
                     </div>
-                    <!-- Bingkai lingkaran hitam berukuran 64px sebagai wadah penempatan gambar logo lambang klub rival -->
                     <div class="rounded-circle d-flex align-items-center justify-content-center overflow-hidden" style="background:#000000; width: 64px; height: 64px;">
-                        <!-- Pemanggilan asset berkas gambar logo celsi dari folder foto lokal laptop Anda dengan padding sela p-1 -->
                         <img src="foto/celsi.png" alt="Chelsea FC Logo" class="object-fit-contain p-1 w-100 h-100" loading="lazy">
-                    <!-- Penutup bingkai lingkaran hitam logo tim lawan kanan -->
                     </div>
-                <!-- Penutup blok tim kanan (Chelsea FC) -->
                 </div>
-            <!-- Penutup total satu baris Kotak Jadwal 2 -->
             </div>
 
             <!-- ========== KOTAK JADWAL BARIS 3: MANCHESTER CITY VS MANCHESTER UNITED ========== -->
-            <!-- Kotak pembungkus jadwal 3 ber-border atas-bawah tanpa menggunakan margin-bottom agar pas presisi rata batas atas footer -->
             <div class="p-4 p-md-5 d-flex flex-column flex-md-row align-items-center justify-content-between gap-4 border-bottom border-top" style="background: linear-gradient(135deg, #1a1a1a 0%, #2a1010 100%); border-color: #333 !important;">
-                <!-- Blok Tim Kiri: Menampung logo dan nama tim tuan rumah kali ini yaitu (Manchester City) sejajar horizontal rata kiri -->
                 <div class="d-flex align-items-center gap-3 w-100 w-md-auto justify-content-start">
-                    <!-- Bingkai lingkaran hitam berukuran 56px sebagai wadah penempatan gambar lambang logo klub Manchester City -->
                     <div class="rounded-circle d-flex align-items-center justify-content-center overflow-hidden" style="background:#000000; width: 56px; height: 56px;">
-                        <!-- Pemanggilan asset berkas gambar logo city dari folder foto lokal laptop Anda -->
                         <img src="foto/city.jpg" alt="Manchester City Crest" class="object-fit-contain" style="width: 48px; height: 48px;" loading="lazy">
-                    <!-- Penutup bingkai lingkaran hitam logo Manchester City -->
                     </div>
-                    <!-- Wadah susunan teks informasi identitas klub tim kiri -->
                     <div>
-                        <!-- Menampilkan tulisan teks nama klub Manchester City menggunakan font khusus heading putih tebal -->
                         <div class="font-heading fw-bold fs-5" style="color:#ffffff;">MANCHESTER CITY</div>
-                        <!-- Keterangan label kecil penjelas status laga sebagai tim tuan rumah di stadion Etihad -->
                         <div style="color:#a3a3a3; font-size: 0.75rem;">Kandang</div>
-                    <!-- Penutup wadah susunan teks info klub kiri -->
                     </div>
-                <!-- Penutup blok tim kiri (Manchester City) -->
                 </div>
-                <!-- Blok Tengah: Menampilkan simbol pertarungan VS beserta catatan informasi tanggal kickoff pertandingan Derby Manchester -->
                 <div class="text-center my-3 my-md-0">
-                    <!-- Teks kapital VS berukuran besar fs-3, tebal, dan diwarnai merah menyala khas identitas klub -->
                     <div class="font-heading fs-3 fw-bold" style="color:#c41e3a;">VS</div>
-                    <!-- Teks kecil untuk menampilkan hari, tanggal, bulan, serta jam kickoff siaran langsung pertandingan Derby ketiga -->
                     <div class="mt-1" style="color:#a3a3a3; font-size: 0.75rem;">Sabtu, 16 Mei • 18:30 WIB</div>
-                <!-- Penutup blok teks tengah (VS) -->
                 </div>
-                <!-- Blok Tim Kanan: Menampung logo dan nama tim tamu atau sang penantang yaitu (Manchester United) rata kanan -->
                 <div class="d-flex align-items-center gap-3 w-100 w-md-auto justify-content-end">
-                    <!-- Wadah susunan teks informasi identitas klub tim kanan dengan pengaturan tulisan rata kanan (text-end) -->
                     <div class="text-end">
-                        <!-- Menampilkan teks nama klub Manchester United dengan format huruf kapital putih tebal fs-5 -->
                         <div class="font-heading fw-bold fs-5" style="color:#ffffff;">MANCHESTER UNITED</div>
-                        <!-- Keterangan label kecil penjelas status laga di mana Manchester United berperan sebagai tim tandang -->
                         <div style="color:#a3a3a3; font-size: 0.75rem;">Tandang</div>
-                    <!-- Penutup wadah teks informasi tim kanan -->
                     </div>
-                    <!-- Bingkai lingkaran hitam berukuran 64px sebagai wadah penempatan gambar logo lambang klub Setan Merah -->
                     <div class="rounded-circle d-flex align-items-center justify-content-center overflow-hidden" style="background:#000000; width: 64px; height: 64px;">
-                        <!-- Pemanggilan asset berkas gambar logo emyu dari folder foto lokal laptop Anda dengan padding sela p-1 -->
                         <img src="foto/emyu.png" alt="Manchester United Logo" class="object-fit-contain p-1 w-100 h-100" loading="lazy">
-                    <!-- Penutup bingkai lingkaran hitam logo Manchester United kanan -->
                     </div>
-                <!-- Penutup blok tim kanan (Manchester United) -->
                 </div>
-            <!-- Penutup total satu baris Kotak Jadwal 3 -->
             </div>
 
-        <!-- Tag penutup area konten utama main -->
         </main>
 
         <!-- ==================== BAGIAN FOOTER / AREA BAWAH HALAMAN ==================== -->
-        <!-- Komponen penutup bagian bawah halaman yang dipaksa mengunci posisi di dasar monitor berkat kelas utilitas mt-auto -->
         <footer class="container-fluid px-4 py-5 mt-auto text-center border-top" style="border-color:#222 !important;">
-            <!-- Nama pemegang hak merek dagang dan kepemilikan utama klub Manchester United berukuran kecil tebal -->
             <div class="font-heading fw-bold small" style="color:#ffffff;">MANCHESTER UNITED</div>
-            <!-- Informasi catatan kecil pemberitahuan rilis legalitas hak cipta buatan bertuliskan tahun 2026 ber-warna redup gelap -->
             <div class="mt-2" style="color:#555; font-size: 0.75rem;">© 2026 Manchester United Football Club. Semua hak dilindungi.</div>
             
-            <!-- Area susunan baris horizontal penampung tombol media sosial resmi aktif biar rata tengah (justify-content-center) -->
             <div class="d-flex justify-content-center gap-3 mt-3">
-                
-                <!-- Tautan Tautan Tautan Medsos 1: Instagram (Membuka link tujuan resmi di tab browser baru lewat target="_blank") -->
                 <a href="https://www.instagram.com/manutd?igsh=YTk3YWY4Mndvb2F1" target="_blank" class="text-decoration-none">
-                    <!-- Pemanggilan asset file gambar lambang logo Instagram transparan lokal dari dalam folder bernama foto -->
                     <img src="foto/ig.png" alt="Instagram Logo" style="width: 24px; height: 24px; object-fit: contain;">
-                <!-- Tag penutup link jangkar tautan instagram resmi -->
                 </a> 
               
-                <!-- Tautan Tautan Tautan Medsos 2: YouTube (Membuka link tujuan resmi di tab browser baru lewat target="_blank") -->
                 <a href="https://www.youtube.com/manutd" target="_blank" class="text-decoration-none">
-                    <!-- Pemanggilan asset file gambar lambang logo YouTube merah transparan lokal dari dalam folder bernama foto -->
                     <img src="foto/yutub.png" alt="YouTube Logo" style="width: 26px; height: 26px; object-fit: contain;">
-                <!-- Tag penutup link jangkar tautan youtube resmi -->
                 </a>
-
-            <!-- Penutup area susunan tombol baris media sosial -->
             </div>
-        <!-- Tag penutup elemen footer bawah halaman -->
         </footer>
-    <!-- Tag penutup dari pembungkus utama aplikasi ber-id app -->
     </div>
+    
     <!-- Memanggil berkas naskah JavaScript Bootstrap 5 bundle via online CDN untuk mengaktifkan fungsi responsif navbar -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Menghubungkan berkas logika eksternal JavaScript buatan sendiri dari file script.js lokal -->
+    <!-- Menhubungkan berkas logika eksternal JavaScript buatan sendiri dari file script.js lokal -->
     <script src="script.js"></script>
     <!-- Menjalankan fungsi perintah pemicu dari library Lucide untuk merender seluruh ikon yang tertulis data-lucide -->
-    <script>lucide.createIcons();</script>
-<!-- Tag penutup body halaman web -->
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
-<!-- Tag penutup penanda akhir dari seluruh baris dokumen HTML -->
 </html>
